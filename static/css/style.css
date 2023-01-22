@@ -1,0 +1,817 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+*,
+*::before,
+*::after {
+   -webkit-box-sizing: border-box;
+   -moz-box-sizing: border-box;
+   box-sizing: border-box;
+   margin: 0;
+   padding: 0;
+   text-decoration: none;
+   outline: none;
+
+}
+
+hr {
+   margin: 0;
+   padding: 0;
+}
+
+:root {
+   --primary-color: #021832;
+   --secondary-color: #caa169;
+   --bg-color: #f4f4f4;
+   --bg-black: #000;
+   --bg-white: #fff;
+
+   --primary-font: 'Poppins', 'sans-serif';
+   --secondary-font: 'Oswald', 'sans-serif';
+   --primary-text: #021832;
+   --secondart-text: #caa169;
+   --text-white: #fff;
+   --text-black: #151515;
+   --text-gray: #e4e4e4;
+
+}
+
+body {
+   font-family: var(--primary-font);
+   background-color: var(--text-gray);
+   scroll-behavior: smooth;
+}
+
+
+a {
+   text-decoration: none;
+}
+
+/* scrollbar and custom classes.. */
+
+::-webkit-scrollbar {
+   width: 0.595rem;
+}
+
+::-webkit-scrollbar-track {
+   background: var(--secondary-color);
+}
+
+::-webkit-scrollbar-thumb {
+   background: var(--primary-color);
+}
+
+section {
+   padding: 3.125rem 0;
+}
+
+.main-btn {
+   font-size: 1rem;
+   font-weight: 500;
+   color: var(--primary-color);
+   text-transform: uppercase;
+   background-color: transparent;
+   border: 0.0625rem solid var(--primary-color);
+   padding: 0.375rem 1.875rem;
+   border-radius: 3.125rem;
+   line-height: 1.75rem;
+   display: inline-block;
+   transition: all 0.3s ease-out 0s;
+}
+
+.main-btn:hover {
+   background-color: var(--secondary-color);
+   border-color: var(--secondary-color);
+   color: var(--text-white);
+}
+
+/* here 1 rem means 16 px because rem takes reference from html bodt and font size of html body is 16px so 1rem = 16px if we change the value of font size in body ,html then it the value of rem unit changes accordingly.. */
+
+
+h1 {
+   font-size: 3.75rem;
+   line-height: 4.25rem;
+   font-weight: 700;
+   color: var(--text-white);
+   margin-bottom: 1.0rem;
+   text-transform: uppercase;
+   font-family: var(--secondary-font);
+}
+
+
+
+
+
+h3 {
+   margin-bottom: 1.875rem;
+   line-height: 2.875rem;
+   font-size: 2.25rem;
+   font-weight: 700;
+   color: var(--primary-text);
+   font-family: var(--secondary-font);
+}
+
+h3 span {
+   color: var(--secondary-color);
+}
+
+
+
+h5 {
+   font-size: 1.5rem;
+   line-height: 1;
+   color: var(--primary-text);
+   font-weight: 500;
+   font-family: var(--secondary-font);
+}
+
+h6 {
+   font-size: 1.375rem;
+   color: var(--primary-text);
+   margin-bottom: 0.9375rem;
+   text-transform: uppercase;
+   font-weight: 400;
+   font-family: var(--secondary-font);
+}
+
+p {
+   font-size: 1rem;
+   color: var(--text-black);
+   line-height: 1.625rem;
+}
+
+.section-title::after {
+   content: '';
+   background-image: url('../images/title-icon.webp');
+   background-position: center center;
+   background-repeat: no-repeat;
+   display: block;
+   margin-top: -0.9375rem;
+   height: 0.9375rem;
+   font-weight: bold;
+}
+
+.mycenter {
+   text-align: center;
+   padding: 20px 5px;
+}
+
+/* navigation part css.. */
+
+.header_wrapper .navbar {
+   padding: 0.9375rem 0;
+   background-color: var(--bg-white);
+   -webkit-box-shadow: 0 .5rem .375rem -0.375rem rgb(0 0 0 / 40%);
+   box-shadow: 0 .5rem .375rem -0.375rem rgb(0 0 0 / 40%);
+
+   /* here we only use the transition in these 3 properties not in all properties.. */
+   -webkit-transition: background 0s ease-in-out 0s, margin-top 0s ease-in-out 0s, opacity 0s ease-in-out 0s;
+   transition: background 0s ease-in-out 0s, margin-top 0s ease-in-out 0s, opacity 0s ease-in-out 0s;
+}
+
+.header_wrapper .navbar-toggler {
+   border: 0;
+   color: var(--primary-text);
+   line-height: 2;
+}
+
+/* for removing the box from the button wrapper stream of navbar.. */
+.header_wrapper .navbar-toggler:focus {
+   box-shadow: none;
+}
+
+
+.header_wrapper .nav-item {
+   margin: 0 0.625rem;
+}
+
+.header_wrapper .nav-item .nav-link {
+   font-size: 1rem;
+   font-weight: 500;
+   color: var(--primary-text);
+   display: inline-block;
+}
+
+.header_wrapper .nav-item .nav-link:hover,
+.header_wrapper .nav-item .nav-link:active,
+.header_wrapper .nav-item .nav-link.active {
+   color: var(--secondart-text);
+}
+
+.navbar.header-scrolled {
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100%;
+   z-index: 999;
+   opacity: 1;
+
+   /* in rgba the alpha part is for tranparency so its value varies from 0 to 1 similar to opacity same effects.. */
+   background-color: rgba(255, 255, 255, .92);
+   -webkit-animation: 500ms ease-in-out 0s normal none 1 running fadeIndown;
+   animation: 500ms ease-in-out 0s normal none 1 running fadeIndown;
+}
+
+@keyframes fadeIndown {
+   0% {
+      top: -30%;
+   }
+
+   50% {
+      top: -15%;
+   }
+
+   100% {
+      top: 0;
+   }
+}
+
+/* banner section css... */
+
+.banner_wrapper {
+   height: 40.625rem;
+}
+
+.banner_wrapper .swiper {
+   width: 100%;
+   height: 100%;
+}
+
+.banner_wrapper .swiper-slide {
+
+   width: 100%;
+   height: 100%;
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: cover;
+   position: relative;
+}
+
+.banner_wrapper .swiper-slide::before {
+   content: '';
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   background-color: var(--bg-black);
+   opacity: 0.4;
+   z-index: 0;
+}
+
+.banner_wrapper .swiper-pagination-bullets .swiper-pagination-bullet {
+   width: 0.9375rem;
+   height: 0.9375rem;
+   background-color: var(--secondary-color);
+   border: 0.0625rem solid var(--bg-white);
+}
+
+.banner_wrapper .swiper .slide-caption {
+   height: 100%;
+   position: relative;
+   z-index: 99;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+.banner_wrapper .swiper .slide-caption p {
+   max-width: 37.5rem;
+   margin: 0 auto;
+   color: var(--text-white);
+}
+
+/* this is for the booking portion below the main page content.. */
+.booking-area {
+   background-color: var(--bg-white);
+   box-shadow: 0 0.625rem .9375rem 0 rgb(0 0 0 / 10%);
+   margin-top: -4rem;
+   padding: 3.125rem 1.875rem;
+   position: relative;
+   z-index: 99;
+}
+
+.booking-area .form-control,
+.booking-area .form-select {
+   border: .0625rem solid var(--primary-color);
+   height: 2.5rem;
+   text-transform: uppercase;
+   font-size: .875rem;
+   color: var(--text-black);
+   font-weight: 500;
+}
+
+.booking-area .form-control:focus,
+.booking-area .form-select:focus {
+   outline: none;
+   box-shadow: none;
+}
+
+/* this is for about section.. */
+
+.about_wrapper {
+   padding-top: 9.375rem;
+}
+
+/* this is for room section... */
+.rooms_wrapper .room-item {
+
+   position: relative;
+   overflow: hidden;
+   border-radius: 1rem;
+   height: 100%;
+   box-shadow: 0px 0px 4px 0px var(--secondary-color);
+   border: 1px solid var(--secondary-color);
+   padding: 0;
+}
+
+.rooms_wrapper .room-item img {
+
+   width: 100%;
+   height: 100%;
+   border-radius: 0.8rem;
+   -webkit-transition: all 400ms ease-in 0s;
+   transition: all 400ms ease-in 0s;
+}
+
+/* this will only zoom the picture... */
+.rooms_wrapper .room-item:hover img {
+   -webkit-transform: scale3d(1.05, 1.05, 1.05);
+   transform: scale3d(1.05, 1.05, 1.05);
+}
+
+/* this will create the blackish layer on the photos... */
+.rooms_wrapper .room-item::before {
+   content: "";
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   background: var(--bg-black);
+   opacity: 0;
+   z-index: 1;
+   -webkit-transition: all 400ms ease-in 0s;
+   transition: all 400ms ease-in 0s;
+}
+
+.rooms_wrapper .room-item:hover::before {
+   opacity: 0.6;
+}
+
+.rooms_wrapper .room-item .room-item-wrap {
+   position: absolute;
+   left: 1.875rem;
+   right: 1.875rem;
+   top: 50%;
+
+   transform: translateY(-50%);
+   z-index: 1;
+}
+
+.rooms_wrapper .room-item .room-item-wrap .room-content {
+   text-align: center;
+   border: .125rem solid var(--bg-white);
+   border-radius: 1rem;
+   padding: 5rem 1.875rem;
+   -webkit-transform: scale3d(1.3, 1.3, 1.3);
+   transform: scale3d(1.3, 1.3, 1.3);
+   -webkit-transition: all 500ms ease-in 0s;
+   transition: all 500ms ease-in 0s;
+   opacity: 0;
+}
+
+
+
+/* on hover the background image size is increased and the size of text container is decreased.. */
+
+.rooms_wrapper .room-item:hover .room-item-wrap .room-content {
+   opacity: 1;
+   -webkit-transform: scale3d(1, 1, 1);
+   transform: scale3d(1, 1, 1);
+}
+
+/* 6 Services */
+
+.service-item-wrap {
+   background-color: var(--bg-white);
+}
+
+.service-menu-area ul li a {
+   display: block;
+   margin-bottom: 2.8125rem;
+}
+
+/* line height must be same so that content lies at the center.. */
+.service-menu-area ul li a .service-icon {
+   height: 5.625rem;
+   width: 5.625rem;
+   line-height: 5.625rem;
+   background-color: var(--secondary-color);
+
+   text-align: center;
+   border-radius: 50%;
+   float: left;
+   -webkit-transition: all 0.3s ease-in-out;
+   transition: all 0.3s ease-in-out;
+}
+
+.service-menu-area ul li a .service-icon:hover,
+.service-menu-area ul li a.active .service-icon {
+   background-color: var(--primary-color);
+   color: #fff;
+   box-shadow: 0 .125rem 1.25rem rgb(34 30 31 / 40%);
+}
+
+.service-menu-area ul li:nth-child(1) {
+   margin-left: 0.5625rem;
+}
+
+.service-menu-area ul li:nth-child(2) {
+   margin-left: -2.9375rem;
+}
+
+.service-menu-area ul li:nth-child(3) {
+   margin-left: -6.375rem;
+}
+
+.service-menu-area ul li:nth-child(4) {
+   margin-left: -8.8125rem;
+}
+
+.service-menu-area ul li a p,
+.service-menu-area ul li a h5 {
+   padding-left: 6.875rem;
+   display: block;
+   text-align: left;
+}
+
+.service-menu-area ul li a p span {
+   color: var(--secondary-text)
+}
+
+/* this is css for the transparent counter part where the numbers are changing... */
+
+.counter {
+   height: 35vh;
+   background-image: url('../images/counter-bg.webp');
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: cover;
+   background-attachment: fixed;
+   padding: 3.125rem;
+   position: relative;
+   align-items: center;
+}
+
+.counter::before {
+   position: absolute;
+   content: "";
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   background-color: var(--bg-black);
+   opacity: 0.2;
+   z-index: 1;
+}
+
+.counter h1,
+.counter p {
+   position: relative;
+   z-index: 3;
+   color: var(--text-white)
+}
+
+/*7 Team Section */
+
+.team_wrapper .card {
+   position: relative;
+   overflow: hidden;
+   transition: all 0.04s ease-in 0s;
+}
+
+
+.team_wrapper .card:hover {
+   border: 3px solid var(--secondary-color);
+   box-shadow: 4px 8px 15px 0px var(--primary-color);
+}
+
+.team_wrapper .team-info {
+   background-color: var(--secondary-color);
+   position: absolute;
+   width: 100%;
+   bottom: 0;
+   text-align: center;
+   padding: 1.25rem;
+   margin-bottom: -4.6875rem;
+   transition: all 0.3s ease-in-out;
+}
+
+.team_wrapper .card:hover .team-info {
+   margin-bottom: 0;
+}
+
+.team_wrapper .team-info h5,
+.team_wrapper .team-info p {
+   color: var(--text-white);
+}
+
+.team_wrapper .team-info .social-network {
+   -webkit-transition: all 0.3s ease-in-out;
+   transition: all 0.3s ease-in-out;
+   padding: 1.25rem;
+   margin: 1.25rem -1.25rem -1.25rem;
+   background-color: var(--primary-color);
+   list-style: none;
+   display: flex;
+   align-items: center;
+   justify-content: space-around;
+}
+
+.team_wrapper .team-info .social-network li a {
+   width: 2rem;
+   height: 2rem;
+   line-height: 2rem;
+   display: block;
+   border-radius: 50%;
+   font-size: .9375rem;
+   color: var(--text-white);
+   border: .0625rem solid var(--bg-white)
+}
+
+.team_wrapper .team-info .social-network li a:hover {
+   background-color: var(--secondary-color);
+   border-color: var(--secondary-color);
+   color: var(--text-white);
+   box-shadow: 0 .625rem .9375rem 0 rgb(0 0 0 / 10%);
+}
+
+
+
+/*8 Gallery Section */
+
+.gallery_wrapper .gallery-item {
+   box-shadow: 0 0 .1875rem rgba(0, 0, 0, 0.3);
+   overflow: hidden;
+   position: relative;
+}
+
+.gallery-item:before,
+.gallery-item:after,
+.gallery-item .gallery-item-content:before,
+.gallery-item .gallery-item-content:after {
+   content: "";
+   width: 50%;
+   height: 50%;
+   background: rgba(0, 0, 0, 0.8);
+   position: absolute;
+   top: 0;
+   left: 0;
+   opacity: 0;
+   -webkit-transition: all 0.5s ease 0s;
+   transition: all 0.5s ease 0s;
+}
+
+.gallery-item:after {
+   top: 50%;
+}
+
+.gallery-item:hover:after {
+   top: 0;
+   opacity: 1;
+}
+
+/* the above two create one side hover of the four effects.. */
+
+.gallery-item:hover:before {
+   left: 50%;
+   opacity: 1;
+}
+
+/* this will create one more.. */
+
+.gallery-item .gallery-item-content {
+   position: absolute;
+   top: 0;
+   left: 0;
+   bottom: 0;
+   right: 0;
+   text-align: center;
+   opacity: 0;
+   z-index: 1;
+   -webkit-transition: all 0.3s ease 0s;
+   transition: all 0.3s ease 0s;
+}
+
+.gallery-item:hover .gallery-item-content {
+   opacity: 1;
+}
+
+.gallery-item .gallery-item-content:before,
+.gallery-item .gallery-item-content:after {
+   top: 0;
+   left: 50%;
+   z-index: -1;
+}
+
+/* this will create the third one... */
+.gallery-item .gallery-item-content:after {
+   top: 50%;
+}
+
+.gallery-item:hover .gallery-item-content:after {
+   left: 0;
+   opacity: 1;
+}
+
+/* this will responsible for the fourth one of animation.... */
+.gallery-item:hover .gallery-item-content:before {
+   top: 50%;
+   opacity: 1;
+}
+
+
+
+/*9 pricing section */
+.price_wrapper .card {
+   box-shadow: 0 .125rem .25rem rgb(34 30 31 / 40%);
+   -webkit-transition: all 0.3s ease-in-out;
+   transition: all 0.3s ease-in-out;
+   cursor: pointer;
+}
+
+.price_wrapper .card h3 del {
+   text-decoration: line-through;
+   font-size: 1.5rem;
+   font-weight: 400;
+   margin-right: 10px;
+}
+
+.price_wrapper .card:hover {
+   background-color: var(--secondary-color);
+   box-shadow: 4px 8px 15px 0px var(--primary-color);
+}
+
+.price_wrapper .card:hover h3,
+.price_wrapper .card:hover h5,
+.price_wrapper .card:hover p {
+   color: var(--text-white);
+}
+
+.price_wrapper .card:hover .main-btn {
+   color: var(--text-white);
+   border-color: var(--bg-white)
+}
+
+.price_wrapper .main-btn:hover {
+   background-color: var(--primary-color);
+}
+
+
+/*10 blog */
+
+.blog_wrapper .card {
+   border: 4px solid var(--secondary-color);
+   box-shadow: 4px 8px 15px 0px var(--primary-color);
+   object-fit: cover;
+}
+
+.blog-content {
+   /* margin: -5rem 0 4rem 4.375rem; */
+
+   box-shadow: 0 .125rem .25rem rgb(34 30 31 / 40%);
+
+}
+
+.our-partner-slider {
+   background-color: var(--bg-color);
+   padding: 3.125rem 0;
+}
+
+/* 11 footer */
+.footer_wrapper {
+   background-color: var(--bg-black);
+}
+
+.footer_wrapper h5 {
+   color: var(--text-white);
+   margin-bottom: 1.25rem;
+}
+
+.footer_wrapper ul li {
+   margin-bottom: .3rem;
+   list-style: none;
+}
+
+.footer_wrapper .contact-info li a {
+   color: var(--secondary-color)
+}
+
+.footer_wrapper .link-widget li a,
+.footer_wrapper p {
+   color: var(--text-gray);
+   font-size: .875rem;
+   padding-left: 1.5rem;
+   position: relative;
+   -webkit-transition: all 0.3s ease-out 0s;
+   transition: all 0.3s ease-out 0s;
+}
+
+.footer_wrapper .link-widget li a::before {
+   content: '\f105';
+   font-family: "Font Awesome 5 Free";
+   font-weight: 900;
+   position: absolute;
+   left: 0.3rem;
+   top: 50%;
+   -webkit-transform: translateY(-50%);
+   transform: translateY(-50%);
+}
+
+.footer_wrapper .link-widget li a:hover {
+   margin-left: .625rem;
+   color: var(--secondary-color);
+   box-shadow: none;
+   outline: none;
+}
+
+.footer_wrapper .social-network a {
+   width: 2.1875rem;
+   height: 2.1875rem;
+   margin: .5rem;
+   line-height: 2rem;
+   font-size: .875rem;
+   display: inline-block;
+   border: .125rem solid var(--text-gray);
+   color: var(--text-gray);
+   text-align: center;
+   border-radius: 100%;
+   -webkit-transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+   transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.footer_wrapper .social-network a:hover {
+   background-color: var(--secondary-color);
+   border-color: var(--secondary-color);
+   color: var(--text-white);
+   box-shadow: 0 .625rem .9375rem 0 rgb(0 0 0 / 10%);
+   transform: translateY(-0.1875rem);
+}
+
+.footer_wrapper .form-control:focus {
+   outline: none;
+   box-shadow: none;
+   border-color: var(--secondary-color);
+   border: 1px solid var(--secondary-color);
+   box-shadow: 1.5px 1.5px 10px 0.1px var(--secondary-color);
+}
+
+.footer_wrapper .copyright-section {
+   background-color: var(--primary-color);
+   padding: 1.25rem 0 .3125rem;
+   text-align: center;
+}
+
+
+.footer_wrapper .copyright-section a {
+   color: var(--secondary-text);
+}
+
+/* this is only for the train details page... */
+
+ .travel {
+   /* background-image: linear-gradient(to right, rgba(255, 0, 0, 0), rgba(16, 82, 235, 0.2));; */
+   background-image: url('../images/pexels-mark-plötz-2790396.jpg');
+   background-repeat: no-repeat;
+   background-size: cover;
+   background-position: center center;
+   margin-top: 0px;
+   opacity: 1;
+   margin-bottom: 0;
+}
+
+ /* .travel::before {
+   position: absolute;
+   content: "";
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   background-color: var(--bg-black);
+   opacity: 0.2;
+   z-index: 1;
+} */
+
+body .travel h2,
+body .travel h4,
+body .travel table {
+   color:white;
+   font-weight: bold;
+
+}
+
+body .travel table {
+   font-size: 1.4rem;
+}

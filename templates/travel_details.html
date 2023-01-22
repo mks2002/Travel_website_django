@@ -1,0 +1,106 @@
+{% extends 'base.html' %} {% load static %}
+
+{% block style %}
+<style>
+   .container-my {
+      width: 80vw;
+      height: 100vh;
+      border: 2px solid white;
+      border-radius: 5px;
+      margin: auto;
+      overflow-y: auto;
+   }
+
+</style>
+{% endblock style %}
+
+{% block content1 %}
+
+<div class="travel" style="" >
+   <div class="container-my  p-3 py-5">
+      <h2 class="text-center   mb-5">Book <span class="auto-type"></span></h2>
+      <h2 class="text-center mt-2">search the train by which you want to travel..</h2>
+   
+      <form method="post">
+         {% csrf_token %}
+         <input type="text" name="source" placeholder="Enter the train name " class="form-control my-3" required />
+        
+   
+         <button class="btn btn-primary">Search</button>
+      </form>
+   
+   
+     
+      <hr class="container my-3 text-white">
+   
+      <table class="table">
+         <thead>
+            <tr>
+               <th scope="col">S no.</th>
+               <th scope="col">Train no.</th>
+               <th scope="col">Train name</th>
+               <th scope="col">train from</th>
+               <th scope="col">train to</th>
+               <th scope="col">Book now</th>
+   
+            </tr>
+         </thead>
+         <tbody>
+            {% for p in datamain %}
+            <tr>
+               <th scope="row">{{forloop.counter}}</th>
+               <td>{{p.train_num}}</td>
+               <td>{{p.name}}</td>
+               <td>{{p.train_from}}</td>
+               <td>{{p.train_to}}</td>
+               <td><a href="{% url 'login' %}" class="btn btn-primary">Book now</a></td>
+   
+   
+            </tr>
+            {% empty %}
+            <h4 class="text-center  my-4">
+               Search your train details .
+            </h4>
+            {% endfor %}
+   
+            {% comment %} {{datamain}} {% endcomment %}
+         </tbody>
+      </table>
+   </div>
+</div>
+
+
+
+{% endblock content1 %}
+
+
+
+{% block content4 %}
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+  <script>
+    var typed= new Typed(".auto-type",{
+        strings:["your train ", "now !"],
+        typeSpeed:100,
+        backSpeed:100,
+        loop:true
+    })
+   </script>
+   <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+
+<script
+  src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+  integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+  crossorigin="anonymous"
+></script>
+<script
+  src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+  integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+  crossorigin="anonymous"
+></script>
+<script
+  src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+  integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+  crossorigin="anonymous"
+></script>
+
+{% endblock content4 %}

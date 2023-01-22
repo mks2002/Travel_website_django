@@ -1,0 +1,152 @@
+{% extends 'base.html' %} {% load static %} {% block style %}
+<style>
+  * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+  body {
+    background: rgb(219, 226, 226);
+  }
+  .btn1 {
+    border: none;
+    outline: none;
+    height: 50px;
+    width: 100%;
+    background-color: black;
+    color: aliceblue;
+    border-radius: 4px;
+    font-weight: bold;
+  }
+  .btn1:hover {
+    background: white;
+    border: 1px solid;
+    color: black;
+  }
+  .row111 {
+    background: white;
+    border-radius: 25px;
+    box-shadow: 20px 22px 22px;
+  }
+  img {
+    border-radius: 25px;
+  }
+</style>
+
+{% endblock style %} {% block content1 %}
+
+<!-- log in page  -->
+
+<section class="From my-4 mx-5">
+  <div class="container">
+    <div class="row no-guuter row111">
+      <div class="col-lg-5 d-flex align-items-center">
+        <img
+          src="{% static '/images/Images/hotel2.png' %}"
+          class="img-fluid"
+          alt=""
+        />
+      </div>
+      <div class="col-lg-7 px-5 pt-5">
+        {% comment %} <h1 class="font-weigt-bold py-3">Logo</h1> {% endcomment %}
+        <h4>Book your Services</h4>
+
+        <div class="container">
+          {% if bool == True %}
+          <div
+            class="alert  alert-dismissible {{cname}} fade show"
+            role="alert"
+          >
+            <strong>{{n}}</strong>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="alert"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          {% else %} {% endif %}
+        </div>
+
+        <form method="post">
+          {% csrf_token %}
+          <div class="form-row">
+            <div class="col-lg-7 d-flex">
+              <input
+                type="text"
+                placeholder="First Name"
+                name="name"
+                required
+                class="form-control my-3 p-2"
+              />
+              <input
+                type="text"
+                placeholder="Last Name"
+                name="last"
+                required
+                class="form-control my-3 p-2"
+              />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="col-lg-7">
+              <input
+                type="email"
+                name="email"
+                placeholder="Email-Address"
+                required
+                class="form-control my-3 p-2"
+              />
+            </div>
+            <div class="col-lg-7">
+              <input
+                type="text"
+                placeholder="contact no."
+                name="contact"
+                required
+                class="form-control my-3 p-2"
+              />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="col-lg-7">
+              <input
+                type="number"
+                placeholder="no. of persons"
+                name="person"
+                required
+                class="form-control my-3 p-2"
+              />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="col-lg-7">
+              <button type="submit" class="btn1 mt-3 mb-5">Book Now</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock content1 %} {% block content4 %}
+<script
+  src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+  integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+  crossorigin="anonymous"
+></script>
+<script
+  src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+  integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+  crossorigin="anonymous"
+></script>
+<script
+  src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+  integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+  crossorigin="anonymous"
+></script>
+
+{% endblock content4 %}
