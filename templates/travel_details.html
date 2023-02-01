@@ -1,91 +1,142 @@
-{% extends 'base.html' %} {% load static %}
-
-{% block style %}
+{% extends 'base.html' %} {% load static %} {% block style %}
 <style>
-   .container-my {
-      width: 80vw;
-      height: 100vh;
-      border: 2px solid white;
-      border-radius: 5px;
-      margin: auto;
-      overflow-y: auto;
-   }
+  .container-my {
+    position: relative;
+    width: 80vw;
+    height: 100vh;
+    border: 3px solid white;
+    border-radius: 10px;
+    margin: auto;
+    overflow-y: auto;
+    z-index: 30;
+    margin-bottom: 0;
 
-</style>
-{% endblock style %}
+  }
 
-{% block content1 %}
+  .myimage {
+      border: 2.5px solid var(--secondary-color);
+      border-radius: 15px;
+      margin-right:40px;
+    }
+ 
+  </style>
 
-<div class="travel" style="" >
-   <div class="container-my  p-3 py-5">
-      <h2 class="text-center   mb-5">Book <span class="auto-type"></span></h2>
-      <h2 class="text-center mt-2">search the train by which you want to travel..</h2>
-   
-      <form method="post">
-         {% csrf_token %}
-         <input type="text" name="source" placeholder="Enter the train name " class="form-control my-3" required />
-        
-   
-         <button class="btn btn-primary">Search</button>
-      </form>
-   
-   
-     
-      <hr class="container my-3 text-white">
-   
-      <table class="table">
-         <thead>
-            <tr>
-               <th scope="col">S no.</th>
-               <th scope="col">Train no.</th>
-               <th scope="col">Train name</th>
-               <th scope="col">train from</th>
-               <th scope="col">train to</th>
-               <th scope="col">Book now</th>
-   
-            </tr>
-         </thead>
-         <tbody>
-            {% for p in datamain %}
-            <tr>
-               <th scope="row">{{forloop.counter}}</th>
-               <td>{{p.train_num}}</td>
-               <td>{{p.name}}</td>
-               <td>{{p.train_from}}</td>
-               <td>{{p.train_to}}</td>
-               <td><a href="{% url 'login' %}" class="btn btn-primary">Book now</a></td>
-   
-   
-            </tr>
-            {% empty %}
-            <h4 class="text-center  my-4">
-               Search your train details .
-            </h4>
-            {% endfor %}
-   
-            {% comment %} {{datamain}} {% endcomment %}
-         </tbody>
-      </table>
-   </div>
+{% endblock style %} {% block content1 %}
+
+<div class="travel mb-0" style="">
+
+  <div class="container-my p-3 py-5">
+    <h2 class="text-center mb-5">Book <span class="auto-type"></span></h2>
+    <h2 class="text-center mt-2">
+      search the train by which you want to travel..
+    </h2>
+
+    <form method="post">
+      {% csrf_token %}
+      <input
+        type="text"
+        name="source"
+        placeholder="Enter the train name "
+        class="form-control my-3"
+        required
+      />
+
+      <button class="btn btn-primary">Search</button>
+    </form>
+
+    <hr class="container my-3 text-white" />
+
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">S no.</th>
+          <th scope="col">Train no.</th>
+          <th scope="col">Train name</th>
+          <th scope="col">train from</th>
+          <th scope="col">train to</th>
+          <th scope="col">Book now</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for p in datamain %}
+        <tr>
+          <th scope="row">{{forloop.counter}}</th>
+          <td>{{p.train_num}}</td>
+          <td>{{p.name}}</td>
+          <td>{{p.train_from}}</td>
+          <td>{{p.train_to}}</td>
+          <td>
+            <a
+              href="https://www.irctc.co.in/nget/train-search"
+              class="btn btn-primary" target="_blank"
+              >Book now</a
+            >
+          </td>
+        </tr>
+        {% empty %}
+        <h4 class="text-center my-4">Search your train details .</h4>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
 </div>
-
-
 
 {% endblock content1 %}
 
 
+{% block content2 %}
+<section id="about" >
+<div class="container">
+  <div class="row flex-lg-row flex-column-reverse mb-1">
+    <div class="col-lg-6 text-center text-lg-start">
+      <h3>
+        Welcome to
+        <span
+          > Our Hotel <br class="d-none d-lg-block" />
+          We have
+        </span>
+        best train travel services
+      </h3>
+      <p>
+        A good hotel website should allow people to create and confirm
+        bookings online. It is not simply a contact form, but rather an online
+        reservation system installed on the website. By having a proper online
+        reservation system, people can easily check for room availability,
+        price rate, and secure the booking with payment..
+      </p>
+      <p>
+        This involves organizing content with customers in mind and making
+        sure key information such as rooms and rates, amenities, contact
+        details and online bookings are never more than a single click away.
+      </p>
+    </div>
 
-{% block content4 %}
+    <div class="col-lg-6 mb-4 mb-lg-0 ps-lg-4 text-center mt-4">
+      <img
+        src="{% static 'images/train.jpg' %}"
+        class="img-fluid myimage"
+        alt="About Us"
+      />
+    </div>
+  </div>
+</div>
+
+</section>
+
+{% endblock content2 %}
+
+ {% block content4 %}
 <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-  <script>
-    var typed= new Typed(".auto-type",{
-        strings:["your train ", "now !"],
-        typeSpeed:100,
-        backSpeed:100,
-        loop:true
-    })
-   </script>
-   <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+<script>
+  var typed = new Typed(".auto-type", {
+    strings: ["your train ", "now !"],
+    typeSpeed: 100,
+    backSpeed: 100,
+    loop: true,
+  });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
 
 <script
   src="https://code.jquery.com/jquery-3.2.1.slim.min.js"

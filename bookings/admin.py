@@ -4,12 +4,12 @@ from django.contrib import admin
 
 
 from django.contrib.admin.sites import site
-from bookings.models import Booking
+from bookings.models import Bookinghotel
 
 
-class BookingAdmin(admin.ModelAdmin):
+class BookinghotelAdmin(admin.ModelAdmin):
     list_display = ('firstname', 'lastname', 'email',
-                    'contact_no', 'no_people')
+                    'contact_no', 'no_people', 'username', 'userpassword','start','end')
 
 
-admin.site.register(Booking, BookingAdmin)
+admin.site.register(Bookinghotel, BookinghotelAdmin)

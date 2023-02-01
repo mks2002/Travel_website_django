@@ -10,6 +10,8 @@
     background: rgb(219, 226, 226);
   }
 
+
+
   .btn1 {
     border: none;
     outline: none;
@@ -29,34 +31,58 @@
 
   .row111 {
     background: white;
+    opacity: 0.909;
     border-radius: 25px;
     box-shadow: 20px 22px 22px;
   }
+  .row111:hover{
+    opacity: 1;
+  }
 
   img {
-    
+    background-size: cover;
     border-radius:25px;
+    margin:0;
   }
 </style>
 {% endblock style %} {% block content1 %}
 
+
 <!-- log in page  -->
-<section class="From my-4 mx-5">
+
+
+<div class="bglogin">
+  <section class="From my-4 mx-5">
+    <div class="container">
+      <div class="row no-guuter row111">
+        <div class="col-lg-5 d-flex align-items-center">
+          <img
+            src="{% static '/images/register.jpg' %}"
+            class="img-fluid"
+            alt=""
+          />
+        </div>
+        <div class="col-lg-7 px-5 pt-5">
+          <h4>Sign into your account</h4>
   <div class="container">
-    <div class="row no-guuter row111">
-      <div class="col-lg-5 d-flex align-items-center">
-        <img
-          src="{% static '/images/Images/hotel4 - Copy.png' %}"
-          class="img-fluid"
-          alt=""
-        />
+    <div class="container">
+      {% if bool == False %}
+      <div
+        class="alert  alert-dismissible {{cname}} fade show"
+        role="alert"
+      >
+        <strong>{{n}}</strong>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="alert"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
-      <div class="col-lg-7 px-5 pt-5">
-        <h4>Sign into your account</h4>
-<div class="container">
-  <div class="container">
-    {% if bool == False %}
-    <div
+      {% elif bool == 50 %}
+      <div
       class="alert  alert-dismissible {{cname}} fade show"
       role="alert"
     >
@@ -70,60 +96,47 @@
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
-    {% elif bool == 50 %}
-    <div
-    class="alert  alert-dismissible {{cname}} fade show"
-    role="alert"
-  >
-    <strong>{{n}}</strong>
-    <button
-      type="button"
-      class="close"
-      data-dismiss="alert"
-      aria-label="Close"
-    >
-      <span aria-hidden="true">&times;</span>
-    </button>
+    {% else %}
+    {% endif %}
+  
   </div>
-  {% else %}
-  {% endif %}
-
-</div>
-
-        <form method="post">
-          {% csrf_token %}
-          <div class="form-row">
-            <div class="col-lg-7">
-              <input
-                type="text"
-                name="name"
-                placeholder="Email-username"
-                class="form-control my-3 p-4"
-                required
-              />
+  
+          <form method="post">
+            {% csrf_token %}
+            <div class="form-row">
+              <div class="col-lg-7">
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="username"
+                  class="form-control my-3 p-4"
+                  required
+                />
+              </div>
             </div>
-          </div>
-          <div class="form-row">
-            <div class="col-lg-7">
-              <input
-                type="password"
-                name="password"
-                placeholder="password"
-                class="form-control my-3 p-4"
-              />
+            <div class="form-row">
+              <div class="col-lg-7">
+                <input
+                  type="password"
+                  name="password"
+                  placeholder="password"
+                  class="form-control my-3 p-4"
+                />
+              </div>
             </div>
-          </div>
-          <div class="form-row">
-            <div class="col-lg-7">
-              <button type="submit" class="btn1 mt-3 mb-5">Login</button>
+            <div class="form-row">
+              <div class="col-lg-7">
+                <button type="submit" class="btn1 mt-3 mb-5">Login</button>
+              </div>
             </div>
-          </div>
-          <p>Don't have an account <a href="{% url 'signup' %}">Register here</a></p>
-        </form>
+            <p>Don't have an account <a href="{% url 'signup' %}">Register here</a></p>
+          </form>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
+</div>
+
 {% endblock content1 %}
 
 

@@ -1,20 +1,38 @@
-
-
-{% extends 'base.html' %} {% block content1 %}
-{% load static %}
+{% extends 'base.html' %} {% block content1 %} {% load static %}
 <!-- home section... -->
 <section id="home" class="banner_wrapper p-0">
   <div class="swiper mySwiper">
     <div class="swiper-wrapper">
-      <div
-        class="swiper-slide"
-        style="
-          background-image: url('{% static './images/slider/slider2.webp' %}');
-        "
-      >
+
+      <div class="swiper-slide" style=" background-image: url('{% static 'images/slider/slide5.webp' %}'); " >
+          <div class="slide-caption text-center">
+            <div>
+              <h1>Welcome to hotel in DUBAI</h1>
+              <p>
+                you are most welcome to the worlds best hotels in dubai , you can
+                book any time at your own pace. we provide the best facility you
+                have experienced ever. you are always welcome
+              </p>
+            </div>
+          </div>
+      </div>
+
+      <div class="swiper-slide" style=" background-image: url('{% static 'images/slider/slider2.webp' %}'); " >
+          <div class="slide-caption text-center">
+            <div>
+              <h1>Welcome to hotel in THAILAND</h1>
+              <p>
+                you are most welcome to the worlds best hotels in dubai , you can
+                book any time at your own pace. we provide the best facility you
+                have experienced ever. you are always welcome
+              </p>
+            </div>
+          </div>
+      </div>
+      <div class="swiper-slide" style=" background-image: url('{% static 'images/slider/slide7.jpg' %}'); " >
         <div class="slide-caption text-center">
           <div>
-            <h1>Welcome to hotel in dubi</h1>
+            <h1>Welcome to hotel in SWITZERLAND</h1>
             <p>
               you are most welcome to the worlds best hotels in dubai , you can
               book any time at your own pace. we provide the best facility you
@@ -22,41 +40,33 @@
             </p>
           </div>
         </div>
-      </div>
-      <div
-        class="swiper-slide"
-        style="
-          background-image: url('{% static './images/slider/slide5.webp' %}');
-        "
-      >
-        <div class="slide-caption text-center">
-          <div>
-            <h1>Welcome to hotel in dubi</h1>
-            <p>
-              you are most welcome to the worlds best hotels in dubai , you can
-              book any time at your own pace. we provide the best facility you
-              have experienced ever. you are always welcome
-            </p>
-          </div>
+    </div>
+
+    <div class="swiper-slide" style=" background-image: url('{% static 'images/slider/slide3.jpg' %}'); " >
+      <div class="slide-caption text-center">
+        <div>
+          <h1>Welcome to hotel in DUBAI</h1>
+          <p>
+            you are most welcome to the worlds best hotels in dubai , you can
+            book any time at your own pace. we provide the best facility you
+            have experienced ever. you are always welcome
+          </p>
         </div>
       </div>
-      <div
-        class="swiper-slide"
-        style="
-          background-image: url('{% static './images/slider/slide3.webp' %}');
-        "
-      >
-        <div class="slide-caption text-center">
-          <div>
-            <h1>Welcome to hotel in dubi</h1>
-            <p>
-              you are most welcome to the worlds best hotels in dubai , you can
-              book any time at your own pace. we provide the best facility you
-              have experienced ever. you are always welcome
-            </p>
-          </div>
-        </div>
+  </div>
+
+  <div class="swiper-slide" style=" background-image: url('{% static 'images/slider/slide6.jpg' %}'); " >
+    <div class="slide-caption text-center">
+      <div>
+        <h1>Welcome to hotel in NORWAY</h1>
+        <p>
+          you are most welcome to the worlds best hotels in dubai , you can
+          book any time at your own pace. we provide the best facility you
+          have experienced ever. you are always welcome
+        </p>
       </div>
+    </div>
+</div>
     </div>
     <div class="swiper-pagination"></div>
   </div>
@@ -64,14 +74,14 @@
   <div class="container booking-area">
     <div class="row">
       <div class="col-lg mb-3 mb-lg-0">
-        <input type="date" class="form-control" placeholder="Date" />
+        <input type="date" class="form-control" placeholder="Date" required />
       </div>
       <div class="col-lg mb-3 mb-lg-0">
-        <input type="date" class="form-control" placeholder="Date" />
+        <input type="date" class="form-control" placeholder="Date" required />
       </div>
 
       <div class="col-lg mb-3 mb-lg-0">
-        <select title="select" class="form-select">
+        <select title="select" class="form-select" required>
           <option selected>Adults</option>
           <option value="1">1</option>
           <option value="2">2</option>
@@ -83,7 +93,7 @@
       </div>
 
       <div class="col-lg mb-3 mb-lg-0">
-        <select title="select" class="form-select">
+        <select title="select" class="form-select" required>
           <option selected>Childrems</option>
           <option value="1">1</option>
           <option value="2">2</option>
@@ -96,7 +106,7 @@
 
       <div class="col-lg mb-3 mb-lg-0">
         <button type="submit" class="main-btn rounded-2 px-lg-3">
-          Check avialibility.
+          <a href="{% url 'travel' %}"> Check avialibility.</a>
         </button>
       </div>
     </div>
@@ -128,7 +138,7 @@
           details and online bookings are never more than a single click away.
         </p>
 
-        <a href="#" class="main-btn mt-4">Read more</a>
+        <a href="{% url 'about' %}" class="main-btn mt-4">Read more</a>
       </div>
 
       <div class="col-lg-6 mb-4 mb-lg-0 ps-lg-4 text-center">
@@ -230,7 +240,9 @@
 
     <div class="row">
       <div class="col-sm-12 mycenter">
-        <a href="#" class="main-btn mt-2">View all services</a>
+        <a href="{% url 'service' %}" class="main-btn mt-2"
+          >View all services</a
+        >
       </div>
     </div>
   </div>
@@ -413,7 +425,7 @@
       <div class="col-lg-3 col-md-6 mb-4">
         <div class="card p-0 rounded-3">
           <img
-            src="{% static 'images/team/team1.webp' %}"
+            src="{% static 'images/team/team2.webp' %}"
             alt=""
             class="img-fluid rounded-3"
           />
@@ -671,10 +683,7 @@
     </div>
   </div>
 </section>
-{% endblock content1 %} 
-
-
-{% block content3 %}
+{% endblock content1 %} {% block content3 %}
 
 <div class="container">
   <div class="row">
@@ -710,7 +719,6 @@
           <p class="mt-2">
             Posts are typically displayed in reverse chronological order so that
             the most recent post appears first, at the top of the web page.
-            
           </p>
           <a href="#" class="main-btn mt-2">Read More</a>
         </div>

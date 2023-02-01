@@ -1,4 +1,15 @@
-{% extends 'base.html' %} {% load static %} {% block content1 %}
+{% extends 'base.html' %} {% load static %} {% block style %}
+
+<style>
+  .blog_wrapper .card {
+    border: 4px solid var(--secondary-color);
+    box-shadow: 4px 8px 15px 0px var(--primary-color);
+    height: 40vh;
+    overflow-y: auto;
+  }
+</style>
+
+{% endblock style %} {% block content1 %}
 
 <section id="blog" class="blog_wrapper pb-0">
   <div class="container">
@@ -10,7 +21,8 @@
     </div>
 
     <div class="row">
-      <div class="col-md-6 mb-4">
+
+      <div class="col-md-6 col-lg-4 mb-4">
         <div class="card p-0 rounded-1">
           <img src="{% static 'images/blog/blog1.webp' %}" alt="" />
           <hr />
@@ -27,7 +39,7 @@
         </div>
       </div>
 
-      <div class="col-md-6 mb-4 mx-0">
+      <div class="col-md-6 col-lg-4 mb-4 mx-0">
         <div class="card p-0 rounded-0">
           <img src="{% static 'images/blog/blog2.webp' %}" alt="" />
           <div class="blog-content bg-white p-4">
@@ -42,9 +54,8 @@
           </div>
         </div>
       </div>
-      <hr class="container my-2">
 
-      <div class="col-md-6 mb-4">
+      <div class="col-md-6 col-lg-4 mb-4">
         <div class="card p-0 rounded-1">
           <img src="{% static 'images/blog/b4.jpg' %}" alt="" />
           <hr />
@@ -61,7 +72,7 @@
         </div>
       </div>
 
-      <div class="col-md-6 mb-4">
+      <div class="col-md-6 col-lg-4 mb-4">
         <div class="card p-0 rounded-1">
           <img src="{% static 'images/blog/b4.webp' %}" alt="" />
           <hr />
@@ -77,10 +88,74 @@
           </div>
         </div>
       </div>
+      <div class="col-md-6 col-lg-4 mb-4">
+        <div class="card p-0 rounded-1">
+          <img src="{% static 'images/images/hotel3.png' %}" alt="" />
+          <hr />
+          <div class="blog-content bg-white p-4">
+            <h5 class="text-decoration-underline mb-4">Relax Zone</h5>
+            <h6>By Admin - February 18, 2018</h6>
+            <p class="mt-2">
+              Posts are typically displayed in reverse chronological order so
+              that the most recent post appears first, at the top of the web
+              page.
+            </p>
+            <a href="#" class="main-btn mt-2">Read More</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4 mb-4">
+        <div class="card p-0 rounded-1">
+          <img src="{% static 'images/train2.jpg' %}" alt="" />
+          <hr />
+          <div class="blog-content bg-white p-4">
+            <h5 class="text-decoration-underline mb-4">Relax Zone</h5>
+            <h6>By Admin - February 18, 2018</h6>
+            <p class="mt-2">
+              Posts are typically displayed in reverse chronological order so
+              that the most recent post appears first, at the top of the web
+              page.
+            </p>
+            <a href="#" class="main-btn mt-2">Read More</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4 mb-4">
+        <div class="card p-0 rounded-1">
+          <img src="{% static 'images/blog/b4.jpg' %}" alt="" />
+          <hr />
+          <div class="blog-content bg-white p-4">
+            <h5 class="text-decoration-underline mb-4">Relax Zone</h5>
+            <h6>By Admin - February 18, 2018</h6>
+            <p class="mt-2">
+              Posts are typically displayed in reverse chronological order so
+              that the most recent post appears first, at the top of the web
+              page.
+            </p>
+            <a href="#" class="main-btn mt-2">Read More</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-lg-4 mb-4">
+        <div class="card p-0 rounded-1">
+          <img src="{% static 'images/images/hotel1.png' %}" alt="" />
+          <hr />
+          <div class="blog-content bg-white p-4">
+            <h5 class="text-decoration-underline mb-4">Relax Zone</h5>
+            <h6>By Admin - February 18, 2018</h6>
+            <p class="mt-2">
+              Posts are typically displayed in reverse chronological order so
+              that the most recent post appears first, at the top of the web
+              page.
+            </p>
+            <a href="#" class="main-btn mt-2">Read More</a>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-
- 
 
   <div class="our-partner-slider mt-0">
     <div class="container swiper our-partner">

@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+ {% load static %} {% block style %}
+
+ {% endblock style %} 
+{% block content1 %}
+
+<div class="dashboard">
+  <div class="mt-5 w-100 text-center section-title">
+    <h2>user dashboard</h2>
+    <hr class="container mb-4">
+    <h3 class="myuser">welcome {{un}}</h3>
+  </div>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-12">
+        <h4 class="text-center mt-4">here is the list of your orders</h4>
+        <div class="mydiv p-3">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">S no.</th>
+                <th scope="col">Customer name</th>
+                <th scope="col">customer Email id</th>
+                <th scope="col">Contact no</th>
+                <th scope="col">No of member</th>
+                <th scope="col">Booking from</th>
+                <th scope="col">end date</th>
+                <th scope="col">Delete order</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for p in maindata %}
+              <tr>
+                <th scope="row">{{forloop.counter}}</th>
+                <td>{{p.firstname}} {{p.lastname}}</td>
+                <td>{{p.email}}</td>
+                <td>{{p.contact_no}}</td>
+                <td>{{p.no_people}}</td>
+                <td>{{p.start}}</td>
+                <td>{{p.end}}</td>
+                <td> <a class="btn btn-danger w-100" href="delete/?id1={{p.id}}&name={{un}}&pw={{pw}}">delete</a></td>
+              </tr>
+              {% empty %}
+              <h4 class="text-center my-4">You have not done any bookings now.</h4>
+              <hr class="container">
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</div>
+
+
+
+{% comment %} <td>
+   <a
+     href="https://www.irctc.co.in/nget/train-search"
+     class="btn btn-primary"
+     >Book now</a
+   >
+ </td> {% endcomment %}
+
+{% endblock content1 %}

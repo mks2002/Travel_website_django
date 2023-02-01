@@ -1,314 +1,366 @@
-{% extends 'base.html' %} {% load static %}
+{% extends 'base.html' %} {% load static %} {% block style %}
+<style>
+  .rooms_wrapper .room-item {
+    height: 65vh;
+  }
+</style>
 
-{% block content1 %}
-
+{% endblock style %} {% block content1 %}
 
 <section id="rooms" class="rooms_wrapper">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-12 section-title text-center mb-5">
+        <h6>What I can do for you</h6>
+        <h3>Our Favorite Rooms</h3>
+      </div>
+      <div class="text-center container px-4">
+        <p>
+          From room descriptions and packages to services, amenities and
+          location information, hotels and other lodgings have a lot of
+          information to cover so it's especially important for hotel websites
+          to organize content well.The main goal is to create revenue via direct
+          online bookings or, indeed, by stimulating bookings via e-mail, as
+          well as, to the projection of the hotel brand identity....A website is
+          the first place where Guests look for information about the hotel. The
+          information is available at all times and thus, it is important that
+          they are presented in an attractive way and managed appropriately. A
+          website is also the main platform for communication with the
+          guests....
+        </p>
+      </div>
+    </div>
 
-   <div class="container-fluid">
-       <div class="row">
+    <div class="row m-0 py-4">
+      <div class="col-md-4 mb-4 mb-lg-0 my-4">
+        <div class="room-item">
+          <img
+            src="{% static './images/room/room1.webp' %}"
+            alt=""
+            class="img-fluid g-0"
+          />
 
-           <div class="col-sm-12 section-title text-center mb-5">
-               <h6>What I can do for you</h6>
-               <h3>Our Favorite Rooms</h3>
-           </div>
-           <div class="text-center container px-4">
-            <p>
-                From room descriptions and packages to services, amenities and location information, hotels and other lodgings have a lot of information to cover so it's especially important for hotel websites to organize content well.The main goal is to create revenue via direct online bookings or, indeed, by stimulating bookings via e-mail, as well as, to the projection of the hotel brand identity....A website is the first place where Guests look for information about the hotel. The information is available at all times and thus, it is important that they are presented in an attractive way and managed appropriately. A website is also the main platform for communication with the guests....
-            </p>
-           </div>
-       </div>
+          <div class="room-item-wrap">
+            <div class="room-content">
+              <h5 class="text-white mb-lg-5 text-decoration-underline">
+                Royal Suit
+              </h5>
+              <p class="text-white">
+                Discover five of our favourite dresses from our new collection
+                that are destined to be worn and loved immediately
+              </p>
+              <p class="text-white fw-bold mt-lg-4">$220 / Per Night</p>
+              <a class="main-btn border-white text-white mt-lg-5" href="#"
+                >Book now</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
 
-       <div class="row m-0 py-4">
+      <div class="col-md-4 mb-4 mb-lg-0 my-4">
+        <div class="room-item">
+          <img
+            src="{% static './images/room/room2.webp' %}"
+            alt=""
+            class="img-fluid g-0"
+          />
 
-           <div class="col-md-4 mb-4 mb-lg-0 my-4 ">
+          <div class="room-item-wrap">
+            <div class="room-content">
+              <h5 class="text-white mb-lg-5 text-decoration-underline">
+                Royal Suit
+              </h5>
+              <p class="text-white">
+                Discover five of our favourite dresses from our new collection
+                that are destined to be worn and loved immediately
+              </p>
+              <p class="text-white fw-bold mt-lg-4">$220 / Per Night</p>
+              <a class="main-btn border-white text-white mt-lg-5" href="#"
+                >Book now</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
 
-               <div class="room-item ">
+      <div class="col-md-4 mb-4 mb-lg-0 my-4">
+        <div class="room-item">
+          <img
+            src="{% static './images/room/room3.webp' %}"
+            alt=""
+            class="img-fluid g-0"
+          />
 
-                   <img src="{% static './images/room/room1.webp' %}" alt="" class="img-fluid g-0">
+          <div class="room-item-wrap">
+            <div class="room-content">
+              <h5 class="text-white mb-lg-5 text-decoration-underline">
+                Royal Suit
+              </h5>
+              <p class="text-white">
+                Discover five of our favourite dresses from our new collection
+                that are destined to be worn and loved immediately
+              </p>
+              <p class="text-white fw-bold mt-lg-4">$220 / Per Night</p>
+              <a class="main-btn border-white text-white mt-lg-5" href="#"
+                >Book now</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
 
-                   <div class="room-item-wrap">
+      <hr class="container my-4" />
+    </div>
+    <div class="row m-0 py-4">
+      <div class="col-md-4 mb-4 mb-lg-0 my-4">
+        <div class="room-item">
+          <img
+            src="{% static './images/h2.jpg' %}"
+            alt=""
+            class="img-fluid g-0"
+          />
 
-                       <div class="room-content">
-                           <h5 class="text-white mb-lg-5 text-decoration-underline">Royal Suit</h5>
-                           <p class="text-white">Discover five of our favourite dresses from our new collection
-                               that
-                               are destined to be worn and loved immediately</p>
-                           <p class="text-white fw-bold mt-lg-4">$220 / Per Night</p>
-                           <a class="main-btn border-white text-white mt-lg-5" href="#">Book now</a>
-                       </div>
+          <div class="room-item-wrap">
+            <div class="room-content">
+              <h5 class="text-white mb-lg-5 text-decoration-underline">
+                Royal Suit
+              </h5>
+              <p class="text-white">
+                Discover five of our favourite dresses from our new collection
+                that are destined to be worn and loved immediately
+              </p>
+              <p class="text-white fw-bold mt-lg-4">$220 / Per Night</p>
+              <a class="main-btn border-white text-white mt-lg-5" href="#"
+                >Book now</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
 
-                   </div>
+      <div class="col-md-4 mb-4 mb-lg-0 my-4">
+        <div class="room-item">
+          <img src="{% static './images/h3.jfif' %}" alt="" class="img-fluid" />
+          <div class="room-item-wrap">
+            <div class="room-content">
+              <h5 class="text-white mb-lg-5 text-decoration-underline">
+                Royal Suit
+              </h5>
+              <p class="text-white">
+                Discover five of our favourite dresses from our new collection
+                that are destined to be worn and loved immediately
+              </p>
+              <p class="text-white fw-bold mt-lg-4">$220 / Per Night</p>
+              <a class="main-btn border-white text-white mt-lg-5" href="#"
+                >Book now</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
 
-               </div>
-           </div>
+      <div class="col-md-4 mb-4 mb-lg-0 my-4">
+        <div class="room-item">
+          <img
+            src="{% static './images/room/room3.webp' %}"
+            alt=""
+            class="img-fluid"
+          />
+          <div class="room-item-wrap">
+            <div class="room-content">
+              <h5 class="text-white mb-lg-5 text-decoration-underline">
+                Royal Suit
+              </h5>
+              <p class="text-white">
+                Discover five of our favourite dresses from our new collection
+                that are destined to be worn and loved immediately
+              </p>
+              <p class="text-white fw-bold mt-lg-4">$220 / Per Night</p>
+              <a class="main-btn border-white text-white mt-lg-5" href="#"
+                >Book now</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-12 section-title text-center mb-5">
+      <h6>What I can do for you</h6>
+      <h3>Our Favorite Train services</h3>
+    </div>
 
-           <div class="col-md-4 mb-4 mb-lg-0 my-4">
+    <div class="row m-0 py-4">
+      <div class="col-md-4 mb-4 mb-lg-0 my-4">
+        <div class="room-item">
+          <img
+            src="{% static './images/t1.jfif' %}"
+            alt=""
+            class="img-fluid g-0"
+          />
 
-               <div class="room-item ">
+          <div class="room-item-wrap">
+            <div class="room-content">
+              <h5 class="text-white mb-lg-5 text-decoration-underline">
+                Royal Suit
+              </h5>
+              <p class="text-white">
+                Discover five of our favourite dresses from our new collection
+                that are destined to be worn and loved immediately
+              </p>
+              <p class="text-white fw-bold mt-lg-4">$220 / Per Night</p>
+              <a class="main-btn border-white text-white mt-lg-5" href="#"
+                >Book now</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
 
-                   <img src="{% static './images/room/room2.webp' %}" alt="" class="img-fluid g-0">
+      <div class="col-md-4 mb-4 mb-lg-0 my-4">
+        <div class="room-item">
+          <img src="{% static './images/t2.jpg' %}" alt="" class="img-fluid" />
+          <div class="room-item-wrap">
+            <div class="room-content">
+              <h5 class="text-white mb-lg-5 text-decoration-underline">
+                Royal Suit
+              </h5>
+              <p class="text-white">
+                Discover five of our favourite dresses from our new collection
+                that are destined to be worn and loved immediately
+              </p>
+              <p class="text-white fw-bold mt-lg-4">$220 / Per Night</p>
+              <a class="main-btn border-white text-white mt-lg-5" href="#"
+                >Book now</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
 
-                   <div class="room-item-wrap">
-
-                       <div class="room-content">
-                           <h5 class="text-white mb-lg-5 text-decoration-underline">Royal Suit</h5>
-                           <p class="text-white">Discover five of our favourite dresses from our new collection
-                               that
-                               are destined to be worn and loved immediately</p>
-                           <p class="text-white fw-bold mt-lg-4">$220 / Per Night</p>
-                           <a class="main-btn border-white text-white mt-lg-5" href="#">Book now</a>
-                       </div>
-
-                   </div>
-
-               </div>
-           </div>
-
-           <div class="col-md-4 mb-4 mb-lg-0 my-2 my-4">
-
-               <div class="room-item ">
-
-                   <img src="{% static './images/room/room3.webp' %}" alt="" class="img-fluid g-0">
-
-                   <div class="room-item-wrap">
-
-                       <div class="room-content">
-                           <h5 class="text-white mb-lg-5 text-decoration-underline">Royal Suit</h5>
-                           <p class="text-white">Discover five of our favourite dresses from our new collection
-                               that
-                               are destined to be worn and loved immediately</p>
-                           <p class="text-white fw-bold mt-lg-4">$220 / Per Night</p>
-                           <a class="main-btn border-white text-white mt-lg-5" href="#">Book now</a>
-                       </div>
-
-                   </div>
-
-               </div>
-           </div>
-
-
-           <hr class="container my-4">
-           <div class="col-md-4 mb-4 mb-lg-0 my-4">
-
-               <div class="room-item ">
-
-                   <img src="{% static './images/h2.jpg' %}" alt="" class="img-fluid g-0">
-
-                   <div class="room-item-wrap">
-
-                       <div class="room-content">
-                           <h5 class="text-white mb-lg-5 text-decoration-underline">Royal Suit</h5>
-                           <p class="text-white">Discover five of our favourite dresses from our new collection
-                               that
-                               are destined to be worn and loved immediately</p>
-                           <p class="text-white fw-bold mt-lg-4">$220 / Per Night</p>
-                           <a class="main-btn border-white text-white mt-lg-5" href="#">Book now</a>
-                       </div>
-
-                   </div>
-
-               </div>
-
-           </div>
-
-           <div class="col-md-4 mb-4 mb-lg-0 my-4">
-               <div class="room-item">
-                   <img src="{% static './images/h3.jfif' %}" alt="" class="img-fluid">
-                   <div class="room-item-wrap">
-                       <div class="room-content">
-                           <h5 class="text-white mb-lg-5 text-decoration-underline">Royal Suit</h5>
-                           <p class="text-white">Discover five of our favourite dresses from our new collection
-                               that
-                               are destined to be worn and loved immediately</p>
-                           <p class="text-white fw-bold mt-lg-4">$220 / Per Night</p>
-                           <a class="main-btn border-white text-white mt-lg-5" href="#">Book now</a>
-                       </div>
-                   </div>
-               </div>
-           </div>
-
-           <div class="col-md-4 mb-4 mb-lg-0 my-4">
-               <div class="room-item">
-                   <img src="{% static './images/room/room3.webp' %}" alt="" class="img-fluid">
-                   <div class="room-item-wrap">
-                       <div class="room-content">
-                           <h5 class="text-white mb-lg-5 text-decoration-underline">Royal Suit</h5>
-                           <p class="text-white">Discover five of our favourite dresses from our new collection
-                               that
-                               are destined to be worn and loved immediately</p>
-                           <p class="text-white fw-bold mt-lg-4">$220 / Per Night</p>
-                           <a class="main-btn border-white text-white mt-lg-5" href="#">Book now</a>
-                       </div>
-                   </div>
-               </div>
-           </div>
-
-       </div>
-       <div class="col-sm-12 section-title text-center mb-5">
-           <h6>What I can do for you</h6>
-           <h3>Our Favorite Train services</h3>
-       </div>
-
-       <div class="row m-0 py-4">
-           <div class="col-md-4 mb-4 mb-lg-0 my-4">
-
-               <div class="room-item ">
-
-                   <img src="{% static './images/t1.jfif' %}" alt="" class="img-fluid g-0">
-
-                   <div class="room-item-wrap">
-
-                       <div class="room-content">
-                           <h5 class="text-white mb-lg-5 text-decoration-underline">Royal Suit</h5>
-                           <p class="text-white">Discover five of our favourite dresses from our new collection
-                               that
-                               are destined to be worn and loved immediately</p>
-                           <p class="text-white fw-bold mt-lg-4">$220 / Per Night</p>
-                           <a class="main-btn border-white text-white mt-lg-5" href="#">Book now</a>
-                       </div>
-
-                   </div>
-
-               </div>
-
-           </div>
-
-           <div class="col-md-4 mb-4 mb-lg-0 my-4">
-               <div class="room-item">
-                   <img src="{% static './images/t2.jpg' %}" alt="" class="img-fluid">
-                   <div class="room-item-wrap">
-                       <div class="room-content">
-                           <h5 class="text-white mb-lg-5 text-decoration-underline">Royal Suit</h5>
-                           <p class="text-white">Discover five of our favourite dresses from our new collection
-                               that
-                               are destined to be worn and loved immediately</p>
-                           <p class="text-white fw-bold mt-lg-4">$220 / Per Night</p>
-                           <a class="main-btn border-white text-white mt-lg-5" href="#">Book now</a>
-                       </div>
-                   </div>
-               </div>
-           </div>
-
-           <div class="col-md-4 mb-4 mb-lg-0 my-4">
-               <div class="room-item">
-                   <img src="{% static './images/t3.jpg' %}" alt="" class="img-fluid">
-                   <div class="room-item-wrap">
-                       <div class="room-content">
-                           <h5 class="text-white mb-lg-5 text-decoration-underline">Royal Suit</h5>
-                           <p class="text-white">Discover five of our favourite dresses from our new collection
-                               that
-                               are destined to be worn and loved immediately</p>
-                           <p class="text-white fw-bold mt-lg-4">$220 / Per Night</p>
-                           <a class="main-btn border-white text-white mt-lg-5" href="#">Book now</a>
-                       </div>
-                   </div>
-               </div>
-           </div>
-       </div>
-   </div>
-
+      <div class="col-md-4 mb-4 mb-lg-0 my-4">
+        <div class="room-item">
+          <img src="{% static './images/t3.jpg' %}" alt="" class="img-fluid" />
+          <div class="room-item-wrap">
+            <div class="room-content">
+              <h5 class="text-white mb-lg-5 text-decoration-underline">
+                Royal Suit
+              </h5>
+              <p class="text-white">
+                Discover five of our favourite dresses from our new collection
+                that are destined to be worn and loved immediately
+              </p>
+              <p class="text-white fw-bold mt-lg-4">$220 / Per Night</p>
+              <a class="main-btn border-white text-white mt-lg-5" href="#"
+                >Book now</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
-<hr class="container">
+<hr class="container" />
 <section id="price" class="price_wrapper">
-   <div class="container">
-       <div class="row">
-           <div class="col-sm-12 section-title text-center mb-5">
-               <h6>Best & Affordable Price for you</h6>
-               <h3>Our Pricing</h3>
-           </div>
-       </div>
-       <div class="row">
-           <div class="col-lg-3 col-md-6 mb-4">
-               <div class="card p-4 text-center rounded-3">
-                   <h5 class="text-decoration-underline mb-4">Economic</h5>
-                   <ul class="list-unstyled">
-                       <li>
-                           <p>Flight Ticket(2)</p>
-                       </li>
-                       <li>
-                           <p>Music Concert (30% Off)</p>
-                       </li>
-                       <li>
-                           <p>Restaurant (Snacks)</p>
-                       </li>
-                       <li>
-                           <p>Face Make(No)</p>
-                       </li>
-                   </ul>
-                   <hr />
-                   <h3>$100<sub class="fs-6 fw-normal">/NIGHT</sub></h3>
-                   <a href="#" class="main-btn">Sign Up</a>
-               </div>
-           </div>
-           <div class="col-lg-3 col-md-6 mb-4">
-               <div class="card p-4 text-center rounded-3">
-                   <h5 class="text-decoration-underline mb-4">buisness</h5>
-                   <ul class="list-unstyled">
-                       <li>
-                           <p>Flight Ticket(2)</p>
-                       </li>
-                       <li>
-                           <p>Music Concert (30% Off)</p>
-                       </li>
-                       <li>
-                           <p>Restaurant (Snacks)</p>
-                       </li>
-                       <li>
-                           <p>Face Make(No)</p>
-                       </li>
-                   </ul>
-                   <hr />
-                   <h3>$140<sub class="fs-6 fw-normal">/NIGHT</sub></h3>
-                   <a href="#" class="main-btn">Sign Up</a>
-               </div>
-           </div>
-           <div class="col-lg-3 col-md-6 mb-4">
-               <div class="card p-4 text-center rounded-3">
-                   <h5 class="text-decoration-underline mb-4">Commercial</h5>
-                   <ul class="list-unstyled">
-                       <li>
-                           <p>Flight Ticket(2)</p>
-                       </li>
-                       <li>
-                           <p>Music Concert (30% Off)</p>
-                       </li>
-                       <li>
-                           <p>Restaurant (Snacks)</p>
-                       </li>
-                       <li>
-                           <p>Face Make(No)</p>
-                       </li>
-                   </ul>
-                   <hr />
-                   <h3>$130<sub class="fs-6 fw-normal">/NIGHT</sub> </h3>
-                   <a href="#" class="main-btn">Sign Up</a>
-               </div>
-           </div>
-           <div class="col-lg-3 col-md-6 mb-4">
-               <div class="card p-4 text-center rounded-3">
-                   <h5 class="text-decoration-underline mb-4">luxury special</h5>
-                   <ul class="list-unstyled">
-                       <li>
-                           <p>Flight Ticket(2)</p>
-                       </li>
-                       <li>
-                           <p>Music Concert (30% Off)</p>
-                       </li>
-                       <li>
-                           <p>Restaurant (Snacks)</p>
-                       </li>
-                       <li>
-                           <p>Face Make(No)</p>
-                       </li>
-                   </ul>
-                   <hr />
-                   <h3><del>$270</del>$150<sub class="fs-6 fw-normal">/NIGHT</sub></h3>
-                   <a href="#" class="main-btn">Sign Up</a>
-               </div>
-           </div>
-       </div>
-   </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 section-title text-center mb-5">
+        <h6>Best & Affordable Price for you</h6>
+        <h3>Our Pricing</h3>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-3 col-md-6 mb-4">
+        <div class="card p-4 text-center rounded-3">
+          <h5 class="text-decoration-underline mb-4">Economic</h5>
+          <ul class="list-unstyled">
+            <li>
+              <p>Flight Ticket(2)</p>
+            </li>
+            <li>
+              <p>Music Concert (30% Off)</p>
+            </li>
+            <li>
+              <p>Restaurant (Snacks)</p>
+            </li>
+            <li>
+              <p>Face Make(No)</p>
+            </li>
+          </ul>
+          <hr />
+          <h3>$100<sub class="fs-6 fw-normal">/NIGHT</sub></h3>
+          <a href="#" class="main-btn">Sign Up</a>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6 mb-4">
+        <div class="card p-4 text-center rounded-3">
+          <h5 class="text-decoration-underline mb-4">buisness</h5>
+          <ul class="list-unstyled">
+            <li>
+              <p>Flight Ticket(2)</p>
+            </li>
+            <li>
+              <p>Music Concert (30% Off)</p>
+            </li>
+            <li>
+              <p>Restaurant (Snacks)</p>
+            </li>
+            <li>
+              <p>Face Make(No)</p>
+            </li>
+          </ul>
+          <hr />
+          <h3>$140<sub class="fs-6 fw-normal">/NIGHT</sub></h3>
+          <a href="#" class="main-btn">Sign Up</a>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6 mb-4">
+        <div class="card p-4 text-center rounded-3">
+          <h5 class="text-decoration-underline mb-4">Commercial</h5>
+          <ul class="list-unstyled">
+            <li>
+              <p>Flight Ticket(2)</p>
+            </li>
+            <li>
+              <p>Music Concert (30% Off)</p>
+            </li>
+            <li>
+              <p>Restaurant (Snacks)</p>
+            </li>
+            <li>
+              <p>Face Make(No)</p>
+            </li>
+          </ul>
+          <hr />
+          <h3>$130<sub class="fs-6 fw-normal">/NIGHT</sub></h3>
+          <a href="#" class="main-btn">Sign Up</a>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6 mb-4">
+        <div class="card p-4 text-center rounded-3">
+          <h5 class="text-decoration-underline mb-4">luxury special</h5>
+          <ul class="list-unstyled">
+            <li>
+              <p>Flight Ticket(2)</p>
+            </li>
+            <li>
+              <p>Music Concert (30% Off)</p>
+            </li>
+            <li>
+              <p>Restaurant (Snacks)</p>
+            </li>
+            <li>
+              <p>Face Make(No)</p>
+            </li>
+          </ul>
+          <hr />
+          <h3><del>$270</del>$150<sub class="fs-6 fw-normal">/NIGHT</sub></h3>
+          <a href="#" class="main-btn">Sign Up</a>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
 {% endblock content1 %}

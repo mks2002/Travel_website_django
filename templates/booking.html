@@ -5,9 +5,7 @@
     margin: 0;
     box-sizing: border-box;
   }
-  body {
-    background: rgb(219, 226, 226);
-  }
+  
   .btn1 {
     border: none;
     outline: none;
@@ -27,110 +25,166 @@
     background: white;
     border-radius: 25px;
     box-shadow: 20px 22px 22px;
+    opacity: 0.91;
+    transition: 1.3s ease;
   }
+ 
   img {
     border-radius: 25px;
   }
+  .hide {
+    display: none;
+  }
 </style>
 
-{% endblock style %} {% block content1 %}
+{% endblock style %} {% block content1 %} 
 
-<!-- log in page  -->
-
-<section class="From my-4 mx-5">
-  <div class="container">
-    <div class="row no-guuter row111">
-      <div class="col-lg-5 d-flex align-items-center">
-        <img
-          src="{% static '/images/Images/hotel2.png' %}"
-          class="img-fluid"
-          alt=""
-        />
-      </div>
-      <div class="col-lg-7 px-5 pt-5">
-        {% comment %} <h1 class="font-weigt-bold py-3">Logo</h1> {% endcomment %}
-        <h4>Book your Services</h4>
-
-        <div class="container">
-          {% if bool == True %}
-          <div
-            class="alert  alert-dismissible {{cname}} fade show"
-            role="alert"
-          >
-            <strong>{{n}}</strong>
-            <button
-              type="button"
-              class="close"
-              data-dismiss="alert"
-              aria-label="Close"
-            >
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          {% else %} {% endif %}
+<!-- Booking page -->
+<div class="booking">
+  <section class="From my-4 mx-5">
+    <div class="container">
+      <div class="row no-guuter row111">
+        <div class="col-lg-5 d-flex align-items-center">
+          <img
+            src="{% static 'images/Images/hotel2.png' %}"
+            class="img-fluid"
+            alt=""
+          />
+          
         </div>
-
-        <form method="post">
-          {% csrf_token %}
-          <div class="form-row">
-            <div class="col-lg-7 d-flex">
-              <input
-                type="text"
-                placeholder="First Name"
-                name="name"
-                required
-                class="form-control my-3 p-2"
-              />
-              <input
-                type="text"
-                placeholder="Last Name"
-                name="last"
-                required
-                class="form-control my-3 p-2"
-              />
+        <div class="col-lg-7 px-5 pt-5">
+          <h4>Book your Services</h4>
+  
+          <div class="container">
+            {% if bool == True %}
+            <div
+              class="alert  alert-dismissible {{cname}} fade show"
+              role="alert"
+            >
+              <strong>{{n}}</strong>
+              <button
+                type="button"
+                class="close"
+                data-dismiss="alert"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">&times;</span>
+              </button>
             </div>
+            {% else %} {% endif %}
           </div>
-          <div class="form-row">
-            <div class="col-lg-7">
-              <input
-                type="email"
-                name="email"
-                placeholder="Email-Address"
-                required
-                class="form-control my-3 p-2"
-              />
+  
+          <form method="post">
+            {% csrf_token %}
+  
+            <div class="hide">
+              <div class="form-row">
+                <div class="col-lg-7 d-flex">
+                  <input
+                    type="text"
+                    placeholder="Username"
+                    name="username"
+                    value="{{un}}"
+                    required
+                    class="form-control my-3 p-2"
+                  />
+                  <input
+                    type="text"
+                    placeholder="Password"
+                    name="password"
+                    value="{{pw}}"
+                    required
+                    class="form-control my-3 p-2"
+                  />
+                </div>
+              </div>
             </div>
-            <div class="col-lg-7">
-              <input
-                type="text"
-                placeholder="contact no."
-                name="contact"
-                required
-                class="form-control my-3 p-2"
-              />
+  
+            <div class="form-row">
+              <div class="col-lg-7 d-flex">
+                <input
+                  type="text"
+                  placeholder="First Name"
+                  name="name"
+                  required
+                  class="form-control my-3 p-2"
+                />
+                <input
+                  type="text"
+                  placeholder="Last Name"
+                  name="last"
+                  required
+                  class="form-control my-3 p-2"
+                />
+              </div>
             </div>
+            <div class="form-row">
+              <div class="col-lg-7">
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Email-Address"
+                  required
+                  class="form-control my-3 p-2"
+                />
+              </div>
+              <div class="col-lg-7">
+                <input
+                  type="text"
+                  placeholder="contact no."
+                  name="contact"
+                  required
+                  class="form-control my-3 p-2"
+                />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="col-lg-7">
+                <input
+                  type="number"
+                  placeholder="no. of persons"
+                  name="person"
+                  required
+                  class="form-control my-3 p-2"
+                />
+              </div>
+            </div>
+            <div class="form-row">
+              <label class="text-center">Date of booking</label>
+              <div class="col-lg-7 d-flex">
+                <input
+                  type="date"
+                  name="startdate"
+                  required
+                  class="form-control my-3 p-2"
+                />
+  
+                <input
+                  type="date"
+                  name="lastdate"
+                  required
+                  class="form-control my-3 p-2"
+                />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="col-lg-7">
+                <button type="submit" class="btn1 mt-3 mb-5">Book Now</button>
+              </div>
+            </div>
+          </form>
+        </div>
+        <hr class="container my-2">
+        <div class="row">
+          <div class="col-sm-12 mycenter">
+            <a href="{{url}}" class="main-btn mt-2">View your all orders </a>
           </div>
-          <div class="form-row">
-            <div class="col-lg-7">
-              <input
-                type="number"
-                placeholder="no. of persons"
-                name="person"
-                required
-                class="form-control my-3 p-2"
-              />
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="col-lg-7">
-              <button type="submit" class="btn1 mt-3 mb-5">Book Now</button>
-            </div>
-          </div>
-        </form>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
+</div>
+
 
 {% endblock content1 %} {% block content4 %}
 <script
