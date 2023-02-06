@@ -104,13 +104,11 @@
                   >Traindetails</a
                 >
               </li>
-              {% comment %} this two i dont show on the main navbar whenever
-              user want to book a service he has to go through this login and
-              signpu.... {% endcomment %} 
+             
               <li class="nav-item">
                 <a
-                  class="nav-link {% if request.path == '/login/' %}active {% endif %}"
-                  href="{% url 'login'%}"
+                  class="nav-link {% if request.path == '/login/' %}active {% endif %} {% if request.path == '/signup/' %}active {% endif %}"
+                  href="{% url 'signup'%}"
                   >Login/signup</a
                 >
               </li>

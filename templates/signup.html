@@ -7,7 +7,7 @@
   }
 
   body {
-   background-color: #f4f4f4;
+    background-color: #f4f4f4;
   }
 
   .btn1 {
@@ -29,12 +29,13 @@
 
   .row111 {
     background: white;
-    opacity: 0.9509;
+    opacity: 0.909;
     border-radius: 25px;
     box-shadow: 20px 22px 22px;
   }
-  .row111:hover{
-    opacity: 0.989;
+
+  .row111:hover {
+    opacity: 0.969;
   }
 
   img {
@@ -43,116 +44,71 @@
 </style>
 {% endblock style %} {% block content1 %}
 <div class="bgsign">
+
   <section class="From my-4 mx-5">
     <div class="container">
-      <div class="row no-guuter row111">
-        <div class="col-lg-5 d-flex align-items-center">
-          <img
-            src="{% static '/images/Images/hotel4.png' %}"
-            class="img-fluid"
-            alt=""
-          />
+      <div class="row no-gutters row111">
+
+        <div class="col-lg-6 d-flex align-items-center">
+          <img src="{% static '/images/Images/hotel4.png' %}" class="img-fluid" alt="" />
         </div>
-        <div class="col-lg-7 px-5 pt-5">
+
+        <div class="col-lg-6 px-5 pt-5">
           <h4>Register your account</h4>
-  
+
           <div class="container">
+
             {% if bool == 50 %}
-            <div
-              class="alert  alert-dismissible {{cname}} fade show"
-              role="alert"
-            >
+            <div class="alert  alert-dismissible {{cname}} fade show" role="alert">
               <strong>{{n}}</strong>
-              <button
-                type="button"
-                class="close"
-                data-dismiss="alert"
-                aria-label="Close"
-              >
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
             {% elif bool == 40 %}
-            <div
-              class="alert  alert-dismissible {{cname}} fade show"
-              role="alert"
-            >
+            <div class="alert  alert-dismissible {{cname}} fade show" role="alert">
               <strong>{{n}}</strong>
-              <button
-                type="button"
-                class="close"
-                data-dismiss="alert"
-                aria-label="Close"
-              >
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
             {% elif bool == 30 %}
-            <div
-              class="alert  alert-dismissible {{cname}} fade show"
-              role="alert"
-            >
+            <div class="alert  alert-dismissible {{cname}} fade show" role="alert">
               <strong>{{n}}</strong>
-              <button
-                type="button"
-                class="close"
-                data-dismiss="alert"
-                aria-label="Close"
-              >
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-  
+
             {% else %} {% endif %}
+
+
+            <form method="POST">
+              {% csrf_token %}
+              <div class="form-row">
+                <div class="col-lg-12">
+                  <input type="text" placeholder="Username" name="name" required class="form-control my-3 p-3" />
+                  <input type="email" placeholder="Email-Address" class="form-control my-3 p-3" naem="email" required />
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="col-lg-12">
+                  <input type="password" placeholder="password" name="password" required
+                    class="form-control my-3 p-3" />
+                  <input type="password" name="cpassword" placeholder="confirm password" class="form-control my-3 p-3"
+                    required />
+                </div>
+              </div>
+              <div class="form-row">
+                <div class="col-lg-7 m-auto">
+                  <button type="submit" class="btn1 mt-3 mb-5">Register Now</button>
+                </div>
+              </div>
+              <p>
+                Already have an account <a href="{% url 'login' %}">login here</a>
+              </p>
+            </form>
           </div>
-  
-          <form method="POST">
-            {% csrf_token %}
-            <div class="form-row">
-              <div class="col-lg-7">
-                <input
-                  type="text"
-                  placeholder="Username"
-                  name="name"
-                  required
-                  class="form-control my-3 p-4"
-                />
-                <input
-                  type="email"
-                  placeholder="Email-Address"
-                  class="form-control my-3 p-4"
-                  naem="email"
-                  required
-                />
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="col-lg-7">
-                <input
-                  type="password"
-                  placeholder="password"
-                  name="password"
-                  required
-                  class="form-control my-3 p-4"
-                />
-                <input
-                  type="password"
-                  name="cpassword"
-                  placeholder="confirm password"
-                  class="form-control my-3 p-4"
-                  required
-                />
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="col-lg-7">
-                <button type="submit" class="btn1 mt-3 mb-5">Register Now</button>
-              </div>
-            </div>
-            <p>
-              Already have an account <a href="{% url 'login' %}">login here</a>
-            </p>
-          </form>
         </div>
       </div>
     </div>
@@ -160,20 +116,11 @@
 </div>
 
 {% endblock content1 %} {% block content4 %}
-<script
-  src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-  integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-  crossorigin="anonymous"
-></script>
-<script
-  src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
-  integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-  crossorigin="anonymous"
-></script>
-<script
-  src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
-  integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-  crossorigin="anonymous"
-></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+  integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+  integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+  integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
 {% endblock content4 %}

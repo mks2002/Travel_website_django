@@ -110,7 +110,7 @@ def bookings(request):
     if request.method == "GET":
         un = request.GET.get('name')
         password = request.GET.get('pw')
-        # we use this url as a variable so that we can access this as a value in the page and by using this user can go to the dashboard page from the booking page...
+        # we use this url as a variable so that we can access this as a value in this  page as well as we can use this to take this value to dashboard page and by using this user can go to the dashboard page from the booking page...
         url = '/dashboard/?name={}&pw={}'.format(un, password)
         data = {'un': un, 'pw': password, 'url': url}
         return render(request, 'booking.html', data)
@@ -125,19 +125,30 @@ def bookings(request):
             password = request.POST.get('password')
             start = request.POST.get('startdate')
             end = request.POST.get('lastdate')
-            data = Bookinghotel(firstname=name, lastname=last,
-                                email=email, contact_no=contact, no_people=person, username=username, userpassword=password, start=start, end=end)
-            data.save()
-            class_name = 'alert-success'
-            bool = True
-            n = 'your bookings has been done now'
-            url = '/dashboard/?name={}&pw={}'.format(username, password)
-            data1 = {'cname': class_name,
-                     'bool': bool,
-                     'n': n, 'un': username, 'pw': password, 'url': url}
-            return render(request, 'booking.html', data1)
+            if end < start:
+                class_name = 'alert-warning'
+                bool = 50
+                n = 'your starting date must be less than ending date'
+                url = '/dashboard/?name={}&pw={}'.format(username, password)
+                data1 = {'cname': class_name,
+                         'bool': bool,
+                         'n': n, 'un': username, 'pw': password, 'url': url}
+                return render(request, 'booking.html', data1)
+            else:
+                data = Bookinghotel(firstname=name, lastname=last,
+                                    email=email, contact_no=contact, no_people=person, username=username, userpassword=password, start=start, end=end)
+                data.save()
+                class_name = 'alert-success'
+                bool = True
+                n = 'your bookings has been done now'
+                url = '/dashboard/?name={}&pw={}'.format(username, password)
+                data1 = {'cname': class_name,
+                         'bool': bool,
+                         'n': n, 'un': username, 'pw': password, 'url': url}
+                return render(request, 'booking.html', data1)
     except Exception as e:
         pass
+    # if there is no post request which means user does not do any booking then it will render and by using this user can also go to the dashboard page...
     return render(request, 'booking.html', data1)
 
 

@@ -1,7 +1,8 @@
 {% extends 'base.html' %} {% load static %} {% block style %}
 
 <style>
-  .about_wrapper .myimage {
+  
+.myimage {
     border: 2.5px solid var(--secondary-color);
     border-radius: 15px;
     margin-right:40px;
@@ -13,11 +14,12 @@
 <div class="text-center section-title mt-3">
   <h1 class="text-black">ALl about us..</h1>
 </div>
-<hr class="container" />
+<hr class="container mb-3" />
 
-<section id="about" class="about_wrapper">
+<section id="about" >
 
   <div class="container">
+
     <div class="row flex-lg-row flex-column-reverse mb-5">
       <div class="col-lg-6 text-center text-lg-start">
         <h3>
@@ -44,17 +46,19 @@
 
       <div class="col-lg-6 mb-4 mb-lg-0 ps-lg-4 text-center">
         <img
-          src="{% static 'images/about-img.svg' %}"
-          class="img-fluid"
+          src="{% static 'images/bg4.jpg' %}"
+          class="img-fluid myimage"
           alt="About Us"
         />
       </div>
+      
     </div>
 
-    <hr class="container" />
+    <hr class="container " />
 
-    <div class="row flex-lg-row flex-column-reverse mt-4">
-      <div class="col-lg-6 mb-4 mb-lg-0 ps-lg-4 text-center">
+    <div class="row flex-lg-row flex-column-reverse mt-4 my-2 ">
+      
+      <div class="col-lg-6 mb-4 mb-lg-0 pe-lg-4 my-3 text-center">
         <img
           src="{% static 'images/hotel_plaza.jpg' %}"
           class="img-fluid myimage"
@@ -62,7 +66,7 @@
         />
       </div>
 
-      <div class="col-lg-6 text-center text-lg-start">
+      <div class="col-lg-6 text-center ps-lg-2 my-3 text-lg-start">
         <h3>
           We have the
           <span
@@ -120,6 +124,43 @@
         />
       </div>
     </div>
+
+    <hr class="container my-2">
+
+      <div class="row flex-lg-row flex-column-reverse mt-4 my-2 ">
+      
+      <div class="col-lg-6 mb-4 mb-lg-0 pe-lg-4 my-3 text-center">
+        <img
+          src="{% static 'images/bgsign3.jpg' %}"
+          class="img-fluid myimage"
+          alt="About Us"
+        />
+      </div>
+
+      <div class="col-lg-6 text-center ps-lg-2 my-3 text-lg-start">
+        <h3>
+          We have the
+          <span
+            >BEST <br class="d-none d-lg-block" />
+            holiday
+          </span>
+          plans for your weekend
+        </h3>
+        <p>
+          A good hotel website should allow people to create and confirm
+          bookings online. It is not simply a contact form, but rather an online
+          reservation system installed on the website. By having a proper online
+          reservation system, people can easily check for room availability,
+          price rate, and secure the booking with payment..
+        </p>
+        <p>
+          This involves organizing content with customers in mind and making
+          sure key information such as rooms and rates, amenities, contact
+          details and online bookings are never more than a single click away.
+        </p>
+      </div>
+    </div>
+
     
   </div>
 </section>

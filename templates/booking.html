@@ -5,7 +5,7 @@
     margin: 0;
     box-sizing: border-box;
   }
-  
+
   .btn1 {
     border: none;
     outline: none;
@@ -16,165 +16,133 @@
     border-radius: 4px;
     font-weight: bold;
   }
+
   .btn1:hover {
     background: white;
     border: 1px solid;
     color: black;
   }
+
   .row111 {
     background: white;
     border-radius: 25px;
     box-shadow: 20px 22px 22px;
-    opacity: 0.91;
-    transition: 1.3s ease;
+    opacity: 0.81;
+    transition: .5s ease;
   }
- 
+  .row111:hover{
+    opacity: 0.98;
+  }
+
   img {
     border-radius: 25px;
+    height: 100%;
   }
+
   .hide {
     display: none;
   }
+
+  .myimage {
+    border: 2.5px solid var(--secondary-color);
+    border-radius: 15px;
+    margin-right: 40px;
+  }
 </style>
 
-{% endblock style %} {% block content1 %} 
+{% endblock style %} {% block content1 %}
 
 <!-- Booking page -->
 <div class="booking">
+
   <section class="From my-4 mx-5">
     <div class="container">
-      <div class="row no-guuter row111">
-        <div class="col-lg-5 d-flex align-items-center">
-          <img
-            src="{% static 'images/Images/hotel2.png' %}"
-            class="img-fluid"
-            alt=""
-          />
-          
+
+      <div class="row no-gutters row111">
+
+        <div class="col-lg-6 d-flex align-items-center">
+          <img src="{% static 'images/bgcover3.jpg' %}" class="img-fluid" alt="" />
         </div>
-        <div class="col-lg-7 px-5 pt-5">
+
+        <div class="col-lg-6 px-5 pt-5">
           <h4>Book your Services</h4>
-  
+
           <div class="container">
             {% if bool == True %}
-            <div
-              class="alert  alert-dismissible {{cname}} fade show"
-              role="alert"
-            >
+            <div class="alert  alert-dismissible {{cname}} fade show" role="alert">
               <strong>{{n}}</strong>
-              <button
-                type="button"
-                class="close"
-                data-dismiss="alert"
-                aria-label="Close"
-              >
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            {% else %} {% endif %}
-          </div>
-  
-          <form method="post">
-            {% csrf_token %}
-  
-            <div class="hide">
+            {% elif bool == 50 %}
+            <div class="alert  alert-dismissible {{cname}} fade show" role="alert">
+              <strong>{{n}}</strong>
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            {% else %} 
+           
+            
+            {% endif %}
+
+
+            <form method="post">
+              {% csrf_token %}
+
+              <div class="hide">
+
+                <div class="form-row">
+
+                  <div class="col-lg-6 d-flex">
+                    <input type="text" placeholder="Username" name="username" value="{{un}}" required
+                      class="form-control my-3 p-2" />
+                    <input type="text" placeholder="Password" name="password" value="{{pw}}" required
+                      class="form-control my-3 p-2" />
+                  </div>
+                </div>
+
+              </div>
+
               <div class="form-row">
-                <div class="col-lg-7 d-flex">
-                  <input
-                    type="text"
-                    placeholder="Username"
-                    name="username"
-                    value="{{un}}"
-                    required
-                    class="form-control my-3 p-2"
-                  />
-                  <input
-                    type="text"
-                    placeholder="Password"
-                    name="password"
-                    value="{{pw}}"
-                    required
-                    class="form-control my-3 p-2"
-                  />
+                <div class="col-lg-12 d-flex">
+                  <input type="text" placeholder="First Name" name="name" required class="form-control my-3 p-2" />
+                  <input type="text" placeholder="Last Name" name="last" required class="form-control my-3 p-2" />
                 </div>
               </div>
-            </div>
-  
-            <div class="form-row">
-              <div class="col-lg-7 d-flex">
-                <input
-                  type="text"
-                  placeholder="First Name"
-                  name="name"
-                  required
-                  class="form-control my-3 p-2"
-                />
-                <input
-                  type="text"
-                  placeholder="Last Name"
-                  name="last"
-                  required
-                  class="form-control my-3 p-2"
-                />
+              <div class="form-row">
+                <div class="col-lg-12">
+                  <input type="email" name="email" placeholder="Email-Address" required class="form-control my-3 p-2" />
+                </div>
+                <div class="col-lg-12">
+                  <input type="text" placeholder="contact no." name="contact" required class="form-control my-3 p-2" />
+                </div>
               </div>
-            </div>
-            <div class="form-row">
-              <div class="col-lg-7">
-                <input
-                  type="email"
-                  name="email"
-                  placeholder="Email-Address"
-                  required
-                  class="form-control my-3 p-2"
-                />
+              <div class="form-row">
+                <div class="col-lg-12">
+                  <input type="number" placeholder="no. of persons" name="person" required
+                    class="form-control my-3 p-2" />
+                </div>
               </div>
-              <div class="col-lg-7">
-                <input
-                  type="text"
-                  placeholder="contact no."
-                  name="contact"
-                  required
-                  class="form-control my-3 p-2"
-                />
+              <div class="form-row">
+                <label class="text-center">Date of booking</label>
+                <div class="col-lg-12 d-flex">
+                  <input type="date" name="startdate" required class="form-control my-3 p-2" />
+
+                  <input type="date" name="lastdate" required class="form-control my-3 p-2" />
+                </div>
               </div>
-            </div>
-            <div class="form-row">
-              <div class="col-lg-7">
-                <input
-                  type="number"
-                  placeholder="no. of persons"
-                  name="person"
-                  required
-                  class="form-control my-3 p-2"
-                />
+              <div class="form-row">
+                <div class="col-lg-7 m-auto">
+                  <button type="submit" class="btn1 mt-3 mb-5">Book Now</button>
+                </div>
               </div>
-            </div>
-            <div class="form-row">
-              <label class="text-center">Date of booking</label>
-              <div class="col-lg-7 d-flex">
-                <input
-                  type="date"
-                  name="startdate"
-                  required
-                  class="form-control my-3 p-2"
-                />
-  
-                <input
-                  type="date"
-                  name="lastdate"
-                  required
-                  class="form-control my-3 p-2"
-                />
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="col-lg-7">
-                <button type="submit" class="btn1 mt-3 mb-5">Book Now</button>
-              </div>
-            </div>
-          </form>
+            </form>
+          </div>
         </div>
-        <hr class="container my-2">
+
+        <hr class="container my-1">
         <div class="row">
           <div class="col-sm-12 mycenter">
             <a href="{{url}}" class="main-btn mt-2">View your all orders </a>
@@ -186,21 +154,53 @@
 </div>
 
 
-{% endblock content1 %} {% block content4 %}
-<script
-  src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-  integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-  crossorigin="anonymous"
-></script>
-<script
-  src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
-  integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-  crossorigin="anonymous"
-></script>
-<script
-  src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
-  integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-  crossorigin="anonymous"
-></script>
+{% endblock content1 %}
+
+{% block content2 %}
+
+<section id="about">
+  <div class="container ">
+    <div class="row flex-lg-row flex-column-reverse mb-0 mt-3">
+      <div class="col-lg-6 text-center text-lg-start">
+        <h3>
+          Welcome to
+          <span> Our Hotel <br class="d-none d-lg-block" />
+            We have
+          </span>
+          best world class hotels
+        </h3>
+        <p>
+          A good hotel website should allow people to create and confirm
+          bookings online. It is not simply a contact form, but rather an online
+          reservation system installed on the website. By having a proper online
+          reservation system, people can easily check for room availability,
+          price rate, and secure the booking with payment..
+        </p>
+        <p>
+          This involves organizing content with customers in mind and making
+          sure key information such as rooms and rates, amenities, contact
+          details and online bookings are never more than a single click away.
+        </p>
+      </div>
+
+      <div class="col-lg-6 mb-4 mb-lg-0 ps-lg-4 text-center mt-4">
+        <img src="{% static 'images/bgcover.jpg' %}" class="img-fluid myimage" alt="About Us" />
+      </div>
+    </div>
+  </div>
+
+</section>
+
+{% endblock content2 %}
+
+
+
+{% block content4 %}
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+  integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+  integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+  integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
 {% endblock content4 %}

@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
  {% load static %} {% block style %}
 
+
+ 
  {% endblock style %} 
 {% block content1 %}
 
@@ -14,6 +16,7 @@
     <div class="row">
       <div class="col-sm-12">
         <h4 class="text-center mt-4">here is the list of your orders</h4>
+        
         <div class="mydiv p-3">
           <table class="table">
             <thead>
@@ -25,7 +28,7 @@
                 <th scope="col">No of member</th>
                 <th scope="col">Booking from</th>
                 <th scope="col">end date</th>
-                <th scope="col">Delete order</th>
+                <th scope="col">Delete orders</th>
               </tr>
             </thead>
             <tbody>
@@ -38,13 +41,14 @@
                 <td>{{p.no_people}}</td>
                 <td>{{p.start}}</td>
                 <td>{{p.end}}</td>
-                <td> <a class="btn btn-danger w-100" href="delete/?id1={{p.id}}&name={{un}}&pw={{pw}}">delete</a></td>
+                <td> <a class="main-btn " href="delete/?id1={{p.id}}&name={{un}}&pw={{pw}}">Delete</a></td>
               </tr>
               {% empty %}
               <h4 class="text-center my-4">You have not done any bookings now.</h4>
               <hr class="container">
               {% endfor %}
             </tbody>
+            {% comment %} <td> <a class="main-btn " href="delete/?id1={{p.id}}&name={{un}}&pw={{pw}}">Delete</a></td> {% endcomment %}
           </table>
         </div>
       </div>
@@ -53,14 +57,15 @@
   
 </div>
 
+<div class="container text-center mt-5">
+  <div class="section-title my-2 text-center">
+    <h3 class="myuser"> Dear {{un}}</h3>
+  </div>
+  
+  <h4>How is your experience with our services your feedback is very important for us.</h4>
+  <h5>You can add your valuable feedback of your experiece with us in our blogs page your so that we can improve our services for you next time..</h5>
+  <a href="{% url 'blog'%}" class="main-btn mt-4">add feedback</a>
+</div>
 
-
-{% comment %} <td>
-   <a
-     href="https://www.irctc.co.in/nget/train-search"
-     class="btn btn-primary"
-     >Book now</a
-   >
- </td> {% endcomment %}
 
 {% endblock content1 %}
