@@ -1,4 +1,5 @@
 
+from datetime import datetime as dt
 from hotellist.models import Hotellist
 from django.http import HttpResponse
 from django.shortcuts import render
@@ -158,16 +159,16 @@ def bookings(request):
     data1 = {}
     bool = False
     if request.method == "GET":
-        un = request.GET.get('name')
-        password = request.GET.get('pw')
-        hname = request.GET.get('hname')
-        hcity = request.GET.get('hcity')
-        hstate = request.GET.get('hstate')
-        hcost = request.GET.get('hcost')
+        un1 = request.GET.get('name')
+        password1 = request.GET.get('pw')
+        hname1 = request.GET.get('hname')
+        hcity1 = request.GET.get('hcity')
+        hstate1 = request.GET.get('hstate')
+        hcost1 = request.GET.get('hcost')
         # we use this url as a variable so that we can access this as a value in this  page as well as we can use this to take this value to dashboard page and by using this user can go to the dashboard page from the booking page...
-        url = '/dashboard/?name={}&pw={}'.format(un, password)
-        data = {'un': un, 'pw': password, 'hname': hname,
-                'hcity': hcity, 'hstate': hstate, 'hcost': hcost, 'url': url}
+        url = '/dashboard/?name={}&pw={}'.format(un1, password1)
+        data = {'un1': un1, 'pw1': password1, 'hname1': hname1,
+                'hcity1': hcity1, 'hstate1': hstate1, 'hcost1': hcost1, 'url': url}
         return render(request, 'booking.html', data)
     try:
         if request.method == "POST":
@@ -185,14 +186,25 @@ def bookings(request):
             hotelstate = request.POST.get('hotelstate')
             hotelcost = request.POST.get('hotelcost')
 
+            #  this are all the get method variable....
+            un1 = request.GET.get('name')
+            password1 = request.GET.get('pw')
+            hname1 = request.GET.get('hname')
+            hcity1 = request.GET.get('hcity')
+            hstate1 = request.GET.get('hstate')
+            hcost1 = request.GET.get('hcost')
+
             if end < start:
                 class_name = 'alert-warning'
                 bool = 50
                 n = 'your starting date must be less than ending date'
-                url = '/dashboard/?name={}&pw={}'.format(username, password)
+
+                # url = '/dashboard/?name={}&pw={}'.format(username, password)
+                url = '/dashboard/?name={}&pw={}'.format(un1, password1)
                 data1 = {'cname': class_name,
                          'bool': bool,
-                         'n': n, 'un': username, 'pw': password, 'url': url}
+                         'n': n, 'un': username, 'pw': password, 'url': url, 'un1': un1, 'pw1': password1, 'hname1': hname1,
+                         'hcity1': hcity1, 'hstate1': hstate1, 'hcost1': hcost1}
                 return render(request, 'booking.html', data1)
             else:
                 data = Bookinghotel(firstname=name, lastname=last,
@@ -204,7 +216,8 @@ def bookings(request):
                 url = '/dashboard/?name={}&pw={}'.format(username, password)
                 data1 = {'cname': class_name,
                          'bool': bool,
-                         'n': n, 'un': username, 'pw': password, 'url': url}
+                         'n': n, 'un': username, 'pw': password, 'url': url, 'un1': un1, 'pw1': password1, 'hname1': hname1,
+                         'hcity1': hcity1, 'hstate1': hstate1, 'hcost1': hcost1}
                 return render(request, 'booking.html', data1)
     except Exception as e:
         pass
@@ -220,7 +233,13 @@ def details(request):
         id = request.GET.get('id1')
         url = '/dashboard/?name={}&pw={}'.format(un, password)
         maindata = Bookinghotel.objects.get(id=id)
-        data = {'un': un, 'pw': password, 'maindata': maindata, 'url': url}
+        start = str(maindata.start)
+        end = str(maindata.end)
+        res = (dt.strptime(end, "%Y-%m-%d") -
+               dt.strptime(start, "%Y-%m-%d")).days
+        total_cost=res*maindata.current_cost
+        data = {'un': un, 'pw': password,
+                'maindata': maindata, 'url': url, 'cost': total_cost}
         return render(request, 'order_details.html', data)
     return render(request, 'order_details.html', data)
 

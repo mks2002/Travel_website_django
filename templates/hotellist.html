@@ -1,7 +1,4 @@
-{% extends 'base.html' %}
-{% load static %}
-
-{% block style %}
+{% extends 'base.html' %} {% load static %} {% block style %}
 <style>
   .explore-travel {
     padding: 1rem 0.4rem;
@@ -19,12 +16,10 @@
     margin: auto;
     transition: 0.2s linear;
     border: 2.5px solid var(--secondary-color);
-
   }
 
   .explore-travel .card:hover {
     box-shadow: 0px 0px 10px 2px gray;
-
   }
 
   .explore-travel .card img {
@@ -132,9 +127,9 @@
       height: fit-content !important;
       text-align: center;
     }
-    .myrow a{
+    .myrow a {
       font-size: 1.3rem;
-    } 
+    }
 
     .explore-travel .card {
       height: fit-content;
@@ -166,7 +161,6 @@
     .explore-travel .card .cost i {
       bottom: 210px;
     }
-
   }
 
   /* this is for giving border radius to the last image of this page.. */
@@ -177,10 +171,7 @@
   }
 </style>
 
-{% endblock style %}
-
-{% block content1 %}
-
+{% endblock style %} {% block content1 %}
 
 <div class="explore-travel">
   <div class="container-fluid">
@@ -189,29 +180,20 @@
         <h3 class="myuser">Here is the list of our all hotel rooms !</h3>
       </div>
 
-
       <h5 class="mb-5">
         Here you can search for your favourate hotel in any state at any city
         and you can book according to your convenience ...
       </h5>
-
-
     </div>
 
     <hr class="container-fluid my-4" />
 
-
-
     <div class="container mb-3 mb-lg-5">
       <div class="row p-2 myrow mb-lg-4 mb-1">
         <div class="col-lg-1">
-
-
-          <a  href="/hotellist/{{un}}/{{pw}}/all">ALL</a>
+          <a href="/hotellist/{{un}}/{{pw}}/all">ALL</a>
         </div>
         <div class="col-lg-1">
-
-
           <a href="/hotellist/{{un}}/{{pw}}/goa">GOA</a>
         </div>
 
@@ -236,30 +218,34 @@
       </div>
     </div>
 
-    <hr class="container-fluid mt-0 mb-5">
+    <hr class="container-fluid mt-0 mb-5" />
     <div class="row m-0">
-
       {% for d in data %}
 
       <div class="col-lg-4 col-md-4 mb-lg-5 mb-4">
         <div class="card pb-2">
           <img src="/media/{{d.image}}" class="img-fluid" alt="" />
           <div class="pt-3 p-2">
-            <h3>{{d.name }},<br> {{d.city}},</h3>
+            <h3>
+              {{d.name }},<br />
+              {{d.city}},
+            </h3>
             <h4>{{d.state}}.</h4>
             <p>
               world class hotel with best services and also a large swiming pool
               and function hall..
             </p>
-            <div class="star my-0">
-             
-              {{d.star}}*<i class="fas fa-star"></i>
-              
-            </div>
-            <span>Rs.{{d.current_cost}}<del>Rs{{d.delete_cost}}</del> /night</span>
-            <a href="/bookings/?name={{un}}&pw={{pw}}&hname={{d.name}}&hcity={{d.city}}&hstate={{d.state}}&hcost={{d.current_cost}}"
-              class="main-btn mt-2">Book now</a>
+            <div class="star my-0">{{d.star}}*<i class="fas fa-star"></i></div>
+            <span
+              >Rs.{{d.current_cost}}<del>Rs{{d.delete_cost}}</del> /night</span
+            >
+            <a
+              href="/bookings/?name={{un}}&pw={{pw}}&hname={{d.name}}&hcity={{d.city}}&hstate={{d.state}}&hcost={{d.current_cost}}"
+              class="main-btn mt-2"
+              >Book now</a
+            >
           </div>
+          
           <div class="cost">
             <i class="fas fa-award"></i>
           </div>
@@ -267,51 +253,51 @@
       </div>
 
       {% endfor %}
-
-
-
-
     </div>
-    <hr class="container-fluid">
+    <hr class="container-fluid" />
 
     <section id="about">
-      <div class="container ">
+      <div class="container">
         <div class="row flex-lg-row flex-column-reverse mb-0 mt-3">
           <div class="col-lg-6 text-center text-lg-start">
             <h3>
               Welcome to
-              <span> Our Hotel <br class="d-none d-lg-block" />
+              <span>
+                Our Hotel <br class="d-none d-lg-block" />
                 We have
               </span>
               best world class hotels
             </h3>
             <p>
               A good hotel website should allow people to create and confirm
-              bookings online. It is not simply a contact form, but rather an online
-              reservation system installed on the website. By having a proper online
-              reservation system, people can easily check for room availability,
-              price rate, and secure the booking with payment..
+              bookings online. It is not simply a contact form, but rather an
+              online reservation system installed on the website. By having a
+              proper online reservation system, people can easily check for room
+              availability, price rate, and secure the booking with payment..
             </p>
             <p>
               This involves organizing content with customers in mind and making
               sure key information such as rooms and rates, amenities, contact
-              details and online bookings are never more than a single click away.
+              details and online bookings are never more than a single click
+              away.
             </p>
           </div>
 
           <div class="col-lg-6 mb-4 mb-lg-0 ps-lg-4 text-center mt-4">
-            <img src="{% static 'images/bgcover.jpg' %}" class="img-fluid myimage" alt="About Us" />
+            <img
+              src="{% static 'images/bgcover.jpg' %}"
+              class="img-fluid myimage"
+              alt="About Us"
+            />
           </div>
         </div>
       </div>
-
     </section>
-    <hr class="container mt-2">
-
+    <hr class="container mt-2" />
 
     <div class="container text-center pt-3">
       <div class="section-title my-2 text-center">
-        <h3 class="myuser"> Dear {{un}}</h3>
+        <h3 class="myuser">Dear {{un}}</h3>
       </div>
       <h4>
         by clicking on the below given link you can also view your user
@@ -320,7 +306,6 @@
 
       <a href="{{url}}" class="main-btn mt-2">Dashboard</a>
     </div>
-
   </div>
 </div>
 

@@ -12,6 +12,11 @@
          font-weight: 400!important;
          padding-left:5%;
    }
+
+   i {
+      color: #edc93b;
+      font-size: 1rem;
+    }
 </style>
 
 {% endblock style %}
@@ -43,14 +48,15 @@
                <dt class="col-sm-3">Order Booked by : </dt>
                <dt class="col-sm-9">{{maindata.username }}</dt>
 
-               <dt class="col-sm-3">Hotel details: </dt>
+               <dt class="col-sm-3">Hotel details : </dt>
                <dt class="col-sm-9">{{maindata.hotelname }} , {{maindata.city}} ,<br>{{maindata.state}}.</dt>
+
              
                <dt class="col-sm-3">Date of bokkings : </dt>
                <dt class="col-sm-9">{{maindata.start }} - {{maindata.end}}</dt>
              
                <dt class="col-sm-3">Amount paid : </dt>
-               <dt class="col-sm-9">Rs. {{maindata.current_cost}}</dt>
+               <dt class="col-sm-9">Rs. {{cost}}</dt>
              
                
              </dl>
