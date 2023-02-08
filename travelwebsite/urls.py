@@ -38,6 +38,8 @@ urlpatterns = [
     path('staffs/', views.staffs, name='staffs'),
     path('bookings/', views.bookings, name='booking'),
     path('login/', views.login, name='login'),
+    # this is for update the password..
+    path('update/',views.update,name='update'),
     path('signup/', views.signup, name='signup'),
     path('blogs/', views.blog, name='blog'),
     path('travel_details/', views.travel, name='travel'),

@@ -111,6 +111,42 @@ def staffs(request):
 
 # ____________________________________________________________________________________________________
 
+def signup(request):
+    n = ''
+    cname = ''
+    bool = False
+    data = {'n': n,
+            'bool': bool, 'cname': cname}
+    if request.method == "POST":
+        un = request.POST.get('name')
+        pw = request.POST.get('password')
+        cpw = request.POST.get('cpassword')
+        if pw != cpw:
+            n = "password and confirm password must be same"
+            cname = "alert-danger"
+            bool = 50
+            data = {'n': n,
+                    'bool': bool, 'cname': cname}
+        else:
+            if Login.objects.filter(username=un).exists():
+                n = "username already exist select another"
+                cname = "alert-warning"
+                bool = 40
+                data = {'n': n,
+                        'bool': bool, 'cname': cname}
+            else:
+                maindata = Login(username=un, password=pw)
+                maindata.save()
+                n = 'You have registerd succesfully! now you can login '
+                bool = 30
+                cname = "alert-success"
+                data = {'n': n,
+                        'bool': bool, 'cname': cname}
+                return render(request, 'signup.html', data)
+
+    return render(request, 'signup.html', data)
+
+
 def login(request):
     n = "for booking you need to login first !"
     cname = "alert-warning"
@@ -138,6 +174,30 @@ def login(request):
     return render(request, 'login.html', data)
 
 
+def update(request):
+    n = 'enter your new password here'
+    cname = 'alert-warning'
+    bool = False
+    data = {'n': n, 'bool': bool, 'cname': cname}
+    if request.method == "POST":
+        name = request.POST.get('name')
+        new = request.POST.get('newpassword')
+        if Login.objects.filter(username=name).exists():
+            Login.objects.filter(username=name).update(
+                username=name, password=new)
+            n = 'your password is updated successfully now you can login !'
+            cname = 'alert-success'
+            bool = True
+            data = {'n': n, 'bool': bool, 'cname': cname}
+        else:
+            n = 'No such account is exist'
+            cname = 'alert-danger'
+            bool = 50
+            data = {'n': n, 'bool': bool, 'cname': cname}
+        return render(request, 'update_password.html', data)
+    return render(request, 'update_password.html', data)
+
+
 def hotellist(request, username, password, hotelstate):
     if hotelstate == 'all':
         data = Hotellist.objects.all()
@@ -158,6 +218,7 @@ def bookings(request):
     data = {}
     data1 = {}
     bool = False
+    # this get values are come from the hotellist page..
     if request.method == "GET":
         un1 = request.GET.get('name')
         password1 = request.GET.get('pw')
@@ -222,26 +283,8 @@ def bookings(request):
     except Exception as e:
         pass
     # if there is no post request which means user does not do any booking then it will render and by using this user can also go to the dashboard page...
+    # this is not neccesary because if the request is not post then it must be get and we already handle get request....
     return render(request, 'booking.html', data1)
-
-
-def details(request):
-    data = {}
-    if request.method == "GET":
-        un = request.GET.get('name')
-        password = request.GET.get('pw')
-        id = request.GET.get('id1')
-        url = '/dashboard/?name={}&pw={}'.format(un, password)
-        maindata = Bookinghotel.objects.get(id=id)
-        start = str(maindata.start)
-        end = str(maindata.end)
-        res = (dt.strptime(end, "%Y-%m-%d") -
-               dt.strptime(start, "%Y-%m-%d")).days
-        total_cost=res*maindata.current_cost
-        data = {'un': un, 'pw': password,
-                'maindata': maindata, 'url': url, 'cost': total_cost}
-        return render(request, 'order_details.html', data)
-    return render(request, 'order_details.html', data)
 
 
 def dashboard(request):
@@ -258,6 +301,25 @@ def dashboard(request):
     return render(request, 'dashboard.html', data)
 
 
+def details(request):
+    data = {}
+    if request.method == "GET":
+        un = request.GET.get('name')
+        password = request.GET.get('pw')
+        id = request.GET.get('id1')
+        url = '/dashboard/?name={}&pw={}'.format(un, password)
+        maindata = Bookinghotel.objects.get(id=id)
+        start = str(maindata.start)
+        end = str(maindata.end)
+        res = (dt.strptime(end, "%Y-%m-%d") -
+               dt.strptime(start, "%Y-%m-%d")).days
+        total_cost = res*maindata.current_cost
+        data = {'un': un, 'pw': password,
+                'maindata': maindata, 'url': url, 'cost': total_cost}
+        return render(request, 'order_details.html', data)
+    return render(request, 'order_details.html', data)
+
+
 def delete(request):
     id1 = request.GET.get('id1')
     un = request.GET.get('name')
@@ -265,42 +327,6 @@ def delete(request):
     Bookinghotel.objects.filter(id=id1).delete()
     url = '/dashboard/?name={}&pw={}'.format(un, pw)
     return HttpResponseRedirect(url)
-
-
-def signup(request):
-    n = ''
-    cname = ''
-    bool = False
-    data = {'n': n,
-            'bool': bool, 'cname': cname}
-    if request.method == "POST":
-        un = request.POST.get('name')
-        pw = request.POST.get('password')
-        cpw = request.POST.get('cpassword')
-        if pw != cpw:
-            n = "password and confirm password must be same"
-            cname = "alert-danger"
-            bool = 50
-            data = {'n': n,
-                    'bool': bool, 'cname': cname}
-        else:
-            if Login.objects.filter(username=un).exists():
-                n = "username already exist select another"
-                cname = "alert-warning"
-                bool = 40
-                data = {'n': n,
-                        'bool': bool, 'cname': cname}
-            else:
-                maindata = Login(username=un, password=pw)
-                maindata.save()
-                n = 'You have registerd succesfully! now you can login '
-                bool = 30
-                cname = "alert-success"
-                data = {'n': n,
-                        'bool': bool, 'cname': cname}
-                return render(request, 'signup.html', data)
-
-    return render(request, 'signup.html', data)
 
 
 def blog(request):
