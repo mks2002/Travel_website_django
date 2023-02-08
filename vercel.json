@@ -2,7 +2,7 @@
    "version": 2,
    "builds": [
       {
-         "src": "devntechno/wsgi.py",
+         "src": "travelwebsite/wsgi.py",
          "use": "@vercel/python",
          "config": {
             "maxLambdaSize": "15mb",
