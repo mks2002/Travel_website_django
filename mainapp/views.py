@@ -173,7 +173,7 @@ def login(request):
             return render(request, 'login.html', data)
     return render(request, 'login.html', data)
 
-
+# this page is for changing the password...
 def update(request):
     n = 'enter your new password here'
     cname = 'alert-warning'
@@ -319,7 +319,7 @@ def details(request):
         return render(request, 'order_details.html', data)
     return render(request, 'order_details.html', data)
 
-
+# this page is for deleting the order...
 def delete(request):
     id1 = request.GET.get('id1')
     un = request.GET.get('name')
@@ -332,7 +332,7 @@ def delete(request):
 def blog(request):
     return render(request, 'blogs.html')
 
-
+# this is the traindetails page ...
 def travel(request):
     data = {}
     try:
