@@ -7,11 +7,13 @@
 {% block content1 %}
 
 <div class="dashboard">
+  
   <div class="mt-5 w-100 text-center section-title">
     <h2>user dashboard</h2>
     <hr class="container mb-4">
     <h3 class="myuser">welcome {{un}}</h3>
   </div>
+
   <div class="container-fluid">
     <div class="row">
       <div class="col-sm-12">
@@ -23,11 +25,10 @@
               <tr>
                 <th scope="col">S no.</th>
                 <th scope="col">Customer name</th>
-                <th scope="col">customer Email id</th>
-                <th scope="col">Contact no</th>
-                <th scope="col">No of member</th>
-                <th scope="col">Booking from</th>
-                <th scope="col">end date</th>
+               
+                <th scope="col">Contact no</th> 
+       
+                <th scope="col">view details</th>
                 <th scope="col">Delete orders</th>
               </tr>
             </thead>
@@ -36,12 +37,13 @@
               <tr>
                 <th scope="row">{{forloop.counter}}</th>
                 <td>{{p.firstname}} {{p.lastname}}</td>
-                <td>{{p.email}}</td>
+            
                 <td>{{p.contact_no}}</td>
-                <td>{{p.no_people}}</td>
-                <td>{{p.start}}</td>
-                <td>{{p.end}}</td>
+                <td><a href="/details/?id1={{p.id}}&name={{un}}&pw={{pw}}" class="main-btn">Details</a></td>
+
                 <td> <a class="main-btn " href="delete/?id1={{p.id}}&name={{un}}&pw={{pw}}">Delete</a></td>
+
+              
               </tr>
               {% empty %}
               <h4 class="text-center my-4">You have not done any bookings now.</h4>
@@ -65,6 +67,8 @@
   <h4>How is your experience with our services your feedback is very important for us.</h4>
   <h5>You can add your valuable feedback of your experiece with us in our blogs page your so that we can improve our services for you next time..</h5>
   <a href="{% url 'blog'%}" class="main-btn mt-4">add feedback</a>
+<br>
+  <a href="{{hotelurl}}" class="main-btn mt-4">Back to booking page</a>
 </div>
 
 

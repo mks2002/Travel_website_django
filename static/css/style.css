@@ -907,7 +907,10 @@ body .travel table {
    font-weight: 500;
 }
 
-
+/* this is our custom class to override the color of h3 in dashboard page... */
 .myuser {
    color: var(--secondary-color);
+ 
 }
+
+/* this is the css for the hotelist page... */

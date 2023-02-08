@@ -14,3 +14,7 @@ class Bookinghotel(models.Model):
     userpassword = models.CharField(max_length=30)
     start = models.DateField(default=None)
     end = models.DateField(default=None)
+    hotelname = models.CharField(max_length=80, default=None)
+    city = models.CharField(max_length=60, default=None)
+    state = models.CharField(max_length=60, default=None)
+    current_cost = models.FloatField(default=0.0)

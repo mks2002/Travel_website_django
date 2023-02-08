@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block style %}
+<style>
+
+   .mydiv{
+         width:75vw!important;
+         display: flex;
+         justify-content:space-between;
+         text-align:unset!important;
+         font-size:1.3rem;
+         font-weight: 400!important;
+         padding-left:5%;
+   }
+</style>
+
+{% endblock style %}
+
+{% block content1 %}
+<div class="dashboard">
+   <div class="mt-5 mb-3 w-100 text-center section-title">
+      <h3 class="myuser">Order details for {{maindata.firstname}} {{ maindata.lastname}}</h3>
+   </div>
+  <div class="container-fluid">
+   <div class="row">
+      <div class="col-sm-12">
+
+         <div class="mydiv p-1 px-3">
+            <dl class="row">
+
+               <dt class="col-sm-3">Customer name : </dt>
+               <dt class="col-sm-9">{{maindata.firstname }} {{maindata.lastname}}</dt>
+             
+               <dt class="col-sm-3">Customer email : </dt>
+               <dt class="col-sm-9">{{maindata.email }}</dt>
+
+               <dt class="col-sm-3">Contact details : </dt>
+               <dt class="col-sm-9">{{maindata.contact_no }}</dt>
+
+               <dt class="col-sm-3">NO of people : </dt>
+               <dt class="col-sm-9">{{maindata.no_people }}</dt>
+
+               <dt class="col-sm-3">Order Booked by : </dt>
+               <dt class="col-sm-9">{{maindata.username }}</dt>
+
+               <dt class="col-sm-3">Hotel details: </dt>
+               <dt class="col-sm-9">{{maindata.hotelname }} , {{maindata.city}} ,<br>{{maindata.state}}.</dt>
+             
+               <dt class="col-sm-3">Date of bokkings : </dt>
+               <dt class="col-sm-9">{{maindata.start }} - {{maindata.end}}</dt>
+             
+               <dt class="col-sm-3">Amount paid : </dt>
+               <dt class="col-sm-9">Rs. {{maindata.current_cost}}</dt>
+             
+               
+             </dl>
+         </div>
+      </div>
+   </div>
+  </div>
+</div>
+<hr class="container">
+
+<div class="container text-center mt-5">
+   <h4>Back to dashboard page..</h4>
+   <a href="{{url}}" class="main-btn mt-4">Dashboard</a>
+ </div>
+{% endblock content1 %}

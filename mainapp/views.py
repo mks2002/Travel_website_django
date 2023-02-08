@@ -1,4 +1,5 @@
 
+from hotellist.models import Hotellist
 from django.http import HttpResponse
 from django.shortcuts import render
 
@@ -30,6 +31,8 @@ def price(request):
 def staffs(request):
     return render(request, 'staffs.html')
 
+
+# ______________________________________________________________________________________
 # if we use this method we dont have the access of the username and password of the particular user in booking page when he goes from login page to booking page....
 
 # def bookings(request):
@@ -76,6 +79,36 @@ def staffs(request):
 #             return render(request, 'login.html', data)
 #     return render(request, 'login.html', data)
 
+# ______________________________________________________________________________________________
+
+# here after login we send the user to booking form page but in the below one we create one hotellist page and after login we send user to that hotellist page from there he can go to bookings form page...
+
+# def login(request):
+#     n = "for booking you need to login first !"
+#     cname = "alert-warning"
+#     bool = False
+#     data = {'n': n,
+#             'cname': cname,
+#             'bool': bool}
+#     if request.method == "POST":
+#         un = request.POST.get('name')
+#         pw = request.POST.get('password')
+#         if Login.objects.filter(username=un, password=pw).exists():
+
+#             url = '/bookings/?name={}&pw={}'.format(un, pw)
+#             return HttpResponseRedirect(url)
+
+#         else:
+#             n = "you are not registered create account to login "
+#             cname = "alert-danger"
+#             bool = 50
+#             data = {'n': n,
+#                     'cname': cname,
+#                     'bool': bool}
+#             return render(request, 'login.html', data)
+#     return render(request, 'login.html', data)
+
+# ____________________________________________________________________________________________________
 
 def login(request):
     n = "for booking you need to login first !"
@@ -87,9 +120,10 @@ def login(request):
     if request.method == "POST":
         un = request.POST.get('name')
         pw = request.POST.get('password')
+        hl = 'all'
         if Login.objects.filter(username=un, password=pw).exists():
 
-            url = '/bookings/?name={}&pw={}'.format(un, pw)
+            url = '/hotellist/{}/{}/{}'.format(un, pw, hl)
             return HttpResponseRedirect(url)
 
         else:
@@ -103,6 +137,22 @@ def login(request):
     return render(request, 'login.html', data)
 
 
+def hotellist(request, username, password, hotelstate):
+    if hotelstate == 'all':
+        data = Hotellist.objects.all()
+    elif hotelstate == 'others':
+        data = Hotellist.objects.filter(
+            state='gujrat') | Hotellist.objects.filter(state='laddakh')
+    else:
+        data = Hotellist.objects.filter(state=hotelstate)
+
+    url = '/dashboard/?name={}&pw={}'.format(username, password)
+
+    datamain = {'un': username, 'pw': password,
+                'url': url, 'data': data}
+    return render(request, 'hotellist.html', datamain)
+
+
 def bookings(request):
     data = {}
     data1 = {}
@@ -110,9 +160,14 @@ def bookings(request):
     if request.method == "GET":
         un = request.GET.get('name')
         password = request.GET.get('pw')
+        hname = request.GET.get('hname')
+        hcity = request.GET.get('hcity')
+        hstate = request.GET.get('hstate')
+        hcost = request.GET.get('hcost')
         # we use this url as a variable so that we can access this as a value in this  page as well as we can use this to take this value to dashboard page and by using this user can go to the dashboard page from the booking page...
         url = '/dashboard/?name={}&pw={}'.format(un, password)
-        data = {'un': un, 'pw': password, 'url': url}
+        data = {'un': un, 'pw': password, 'hname': hname,
+                'hcity': hcity, 'hstate': hstate, 'hcost': hcost, 'url': url}
         return render(request, 'booking.html', data)
     try:
         if request.method == "POST":
@@ -125,6 +180,11 @@ def bookings(request):
             password = request.POST.get('password')
             start = request.POST.get('startdate')
             end = request.POST.get('lastdate')
+            hotelname = request.POST.get('hotelname')
+            hotelcity = request.POST.get('hotelcity')
+            hotelstate = request.POST.get('hotelstate')
+            hotelcost = request.POST.get('hotelcost')
+
             if end < start:
                 class_name = 'alert-warning'
                 bool = 50
@@ -136,7 +196,7 @@ def bookings(request):
                 return render(request, 'booking.html', data1)
             else:
                 data = Bookinghotel(firstname=name, lastname=last,
-                                    email=email, contact_no=contact, no_people=person, username=username, userpassword=password, start=start, end=end)
+                                    email=email, contact_no=contact, no_people=person, username=username, userpassword=password, start=start, end=end, hotelname=hotelname, city=hotelcity, state=hotelstate, current_cost=hotelcost)
                 data.save()
                 class_name = 'alert-success'
                 bool = True
@@ -152,13 +212,28 @@ def bookings(request):
     return render(request, 'booking.html', data1)
 
 
+def details(request):
+    data = {}
+    if request.method == "GET":
+        un = request.GET.get('name')
+        password = request.GET.get('pw')
+        id = request.GET.get('id1')
+        url = '/dashboard/?name={}&pw={}'.format(un, password)
+        maindata = Bookinghotel.objects.get(id=id)
+        data = {'un': un, 'pw': password, 'maindata': maindata, 'url': url}
+        return render(request, 'order_details.html', data)
+    return render(request, 'order_details.html', data)
+
+
 def dashboard(request):
     data = {}
     if request.method == "GET":
         un = request.GET.get('name')
         password = request.GET.get('pw')
         tabel = Bookinghotel.objects.filter(username=un, userpassword=password)
-        data = {'un': un, 'pw': password, 'maindata': tabel}
+        hotelurl = '/hotellist/{}/{}/{}'.format(un, password, 'all')
+        data = {'un': un, 'pw': password,
+                'maindata': tabel, 'hotelurl': hotelurl}
         return render(request, 'dashboard.html', data)
 
     return render(request, 'dashboard.html', data)
