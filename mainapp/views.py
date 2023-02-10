@@ -148,18 +148,20 @@ def signup(request):
 
 
 def login(request):
-    n = "for booking you need to login first !"
-    cname = "alert-warning"
-    bool = False
-    data = {'n': n,
-            'cname': cname,
-            'bool': bool}
+    if request.method == "GET":
+        n = "for booking you need to login first !"
+        cname = "alert-warning"
+        bool = False
+        data = {'n': n,
+                'cname': cname,
+                'bool': bool}
+        return render(request, 'login.html', data)
+
     if request.method == "POST":
         un = request.POST.get('name')
         pw = request.POST.get('password')
         hl = 'all'
         if Login.objects.filter(username=un, password=pw).exists():
-
             url = '/hotellist/{}/{}/{}'.format(un, pw, hl)
             return HttpResponseRedirect(url)
 
@@ -173,6 +175,7 @@ def login(request):
             return render(request, 'login.html', data)
     return render(request, 'login.html', data)
 
+
 # this page is for changing the password...
 def update(request):
     n = 'enter your new password here'
@@ -182,13 +185,32 @@ def update(request):
     if request.method == "POST":
         name = request.POST.get('name')
         new = request.POST.get('newpassword')
+        cnew = request.POST.get('confirm_newpassword')
         if Login.objects.filter(username=name).exists():
-            Login.objects.filter(username=name).update(
-                username=name, password=new)
-            n = 'your password is updated successfully now you can login !'
-            cname = 'alert-success'
-            bool = True
-            data = {'n': n, 'bool': bool, 'cname': cname}
+            main = Login.objects.get(username=name)
+            oldpassword = main.password
+
+            if new == cnew:
+                if new == oldpassword:
+                    n = 'your new password is too similar to old password select another !'
+                    cname = 'alert-warning'
+                    bool = 70
+                    data = {'n': n, 'bool': bool, 'cname': cname}
+                else:
+                    Login.objects.filter(username=name).update(
+                        password=new)
+                    # when we update the password we have to update it in the Bookinghotel table also othewise data is not properly displayed...
+                    Bookinghotel.objects.filter(
+                        username=name).update(userpassword=new)
+                    n = 'your password is updated successfully now you can login !'
+                    cname = 'alert-success'
+                    bool = True
+                    data = {'n': n, 'bool': bool, 'cname': cname}
+            else:
+                n = 'pasword and confirm password must be same'
+                cname = 'alert-danger'
+                bool = 60
+                data = {'n': n, 'bool': bool, 'cname': cname}
         else:
             n = 'No such account is exist'
             cname = 'alert-danger'
@@ -266,7 +288,7 @@ def bookings(request):
                          'bool': bool,
                          'n': n, 'un': username, 'pw': password, 'url': url, 'un1': un1, 'pw1': password1, 'hname1': hname1,
                          'hcity1': hcity1, 'hstate1': hstate1, 'hcost1': hcost1}
-                return render(request, 'booking.html', data1)
+                return render(request, 'dashboard.html', data1)
             else:
                 data = Bookinghotel(firstname=name, lastname=last,
                                     email=email, contact_no=contact, no_people=person, username=username, userpassword=password, start=start, end=end, hotelname=hotelname, city=hotelcity, state=hotelstate, current_cost=hotelcost)
@@ -301,6 +323,22 @@ def dashboard(request):
     return render(request, 'dashboard.html', data)
 
 
+# this is the new dashboard function here we dont use the password for fiteration because we give user this option to change his password...
+# but this method is not so accurate because in the booking table the password remains the old so we have to change the passwore in that table also during updation...
+# def dashboard(request):
+#     data = {}
+#     if request.method == "GET":
+#         un = request.GET.get('name')
+#         password = request.GET.get('pw')
+#         tabel = Bookinghotel.objects.filter(username=un)
+#         hotelurl = '/hotellist/{}/{}/{}'.format(un, password, 'all')
+#         data = {'un': un, 'pw': password,
+#                 'maindata': tabel, 'hotelurl': hotelurl}
+#         return render(request, 'dashboard.html', data)
+
+#     return render(request, 'dashboard.html', data)
+
+
 def details(request):
     data = {}
     if request.method == "GET":
@@ -320,6 +358,8 @@ def details(request):
     return render(request, 'order_details.html', data)
 
 # this page is for deleting the order...
+
+
 def delete(request):
     id1 = request.GET.get('id1')
     un = request.GET.get('name')
@@ -333,6 +373,8 @@ def blog(request):
     return render(request, 'blogs.html')
 
 # this is the traindetails page ...
+
+
 def travel(request):
     data = {}
     try:
